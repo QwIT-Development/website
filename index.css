@@ -86,3 +86,11 @@ a:visited {
     background: var(--Accent-Accent);
     color: var(--Text-Primary2) !important;
 }
+
+.hover-animate {
+    content: url('/assets/dave.svg');
+}
+
+.hover-animate:hover {
+    content: url('/assets/dave-hover.gif');
+}
