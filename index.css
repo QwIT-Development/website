@@ -103,3 +103,18 @@ main {
     align-items: center;
     width: 100%;
 }
+
+footer {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 24px;
+    opacity: 0.5;
+}
+
+.footer-sociallist {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
