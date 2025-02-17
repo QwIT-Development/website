@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --Background: #0D1202;
+    --Text-Primary: #EAF7CC;
+}
+
+body {
+    background: var(--Background);
+}
+
+header {
+    padding: 80px;
+}
+
+.header-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header-logo p {
+    color: var(--Text-Primary);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
