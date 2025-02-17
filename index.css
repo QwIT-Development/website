@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -5,6 +8,13 @@
 :root {
     --Background: #0D1202;
     --Text-Primary: #EAF7CC;
+    --Button-SecondaryFill: #20290B;
+    --Shadow-blur: 0px;
+    --Accent-Shadow-color: rgba(203, 238, 113, 0.15);
+    --tiny-shadow: 0px 1px var(--Shadow-blur) 0px var(--Accent-Shadow-color);
+    --Text-Secondary: rgba(234, 247, 204, 0.70);
+    --Accent-Accent: #A7DC22;
+    --Text-Primary2: #394C0A;
 }
 
 body {
@@ -13,12 +23,22 @@ body {
 
 header {
     padding: 80px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .header-logo {
     display: inline-flex;
     align-items: center;
     gap: 16px;
+    height: 40px;
+}
+
+.header-buttons {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
 }
 
 .header-logo p {
@@ -28,4 +48,41 @@ header {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.header-buttons-button {
+    display: flex;
+    height: 40px;
+    padding: 12px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 22px;
+    box-shadow: var(--tiny-shadow);
+    text-decoration: none;
+    font-family: 'Figtree', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+
+.color-darkgreen {
+    background: var(--Button-SecondaryFill);
+    color: var(--Text-Secondary) !important;
+}
+
+.color-brightgreen {
+    background: var(--Accent-Accent);
+    color: var(--Text-Primary2) !important;
 }
