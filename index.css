@@ -94,3 +94,12 @@ a:visited {
 .hover-animate:hover {
     content: url('/assets/dave-hover.gif');
 }
+
+main {
+    padding-left: 515px;
+    padding-right: 515px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
