@@ -36,6 +36,11 @@ header {
     padding: min(80px, 5vw);
     display: flex;
     justify-content: space-between;
+    pointer-events: none;
+}
+
+header * {
+    pointer-events: auto;
 }
 
 .header-logo {
@@ -114,7 +119,7 @@ main {
     justify-content: center;
     align-items: center;
     flex: 1;
-    z-index: 100;
+    z-index: 0;
 }
 
 main p {
@@ -137,6 +142,11 @@ footer {
     gap: 24px;
     opacity: 0.5;
     padding: min(80px, 5vw);
+    pointer-events: none;
+}
+
+footer * {
+    pointer-events: auto;
 }
 
 .footer-sociallist {
