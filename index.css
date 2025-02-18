@@ -29,7 +29,7 @@ body {
 }
 
 header {
-    padding: 80px;
+    padding: min(80px, 5vw);
     display: flex;
     justify-content: space-between;
 }
@@ -104,12 +104,11 @@ a:visited {
 }
 
 main {
-    padding-left: 515px;
-    padding-right: 515px;
+    padding-left: max(20px, min(515px, 20vw));
+    padding-right: max(20px, min(515px, 20vw));
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
     flex: 1;
 }
 
@@ -120,7 +119,7 @@ footer {
     align-items: flex-start;
     gap: 24px;
     opacity: 0.5;
-    padding: 80px;
+    padding: min(80px, 5vw);
 }
 
 .footer-sociallist {
@@ -141,4 +140,41 @@ footer {
 
 .footer-copyright p, .footer-privacy p {
     margin: 0;
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 72px 0 !important;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+    .header-logo {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 16px;
+        flex: 1;
+    }
+    .header-buttons {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        height: 40px;
+    }
+    footer {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        opacity: 0.5;
+        padding: 72px 0 82px !important;
+    }
+    .footer-copyright {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
 }
