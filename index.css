@@ -119,11 +119,10 @@ main {
     align-items: center;
     flex: 1;
     z-index: 0;
+    flex-direction: column;
 }
 
 .webnotice {
-    padding-left: max(20px, min(515px, 20vw));
-    padding-right: max(20px, min(515px, 20vw));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -131,8 +130,7 @@ main {
     flex: 1;
     z-index: 0;
     gap: 20px;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding: 80px max(20px, min(515px, 20vw));
 }
 .webnotice div {
     display: flex;
