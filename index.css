@@ -116,7 +116,6 @@ main {
     padding-left: max(20px, min(515px, 20vw));
     padding-right: max(20px, min(515px, 20vw));
     display: flex;
-    justify-content: center;
     align-items: center;
     flex: 1;
     z-index: 0;
@@ -132,6 +131,8 @@ main {
     flex: 1;
     z-index: 0;
     gap: 20px;
+    padding-top: 80px;
+    padding-bottom: 80px;
 }
 .webnotice div {
     display: flex;
@@ -253,5 +254,10 @@ footer * {
     main {
         padding-left: 20px !important;
         padding-right: 20px !important;
+        justify-content: center;
+    }
+    .webnotice {
+        padding-top: 72px !important;
+        padding-bottom: 72px !important;
     }
 }

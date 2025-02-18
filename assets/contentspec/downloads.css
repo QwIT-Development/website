@@ -1,0 +1,38 @@
+.main-header {
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+.main-header h1 {
+    color: var(--Text-Primary);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+.main-header p {
+    color: var(--Text-Secondary);
+    font-family: 'Figtree', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .main-header h1 {
+        font-size: 20px !important;
+    }
+    .main-header {
+        gap: 16px !important;
+    }
+    .main-header-h1hider h1 {
+        display: inline;
+        margin-right: 4px;
+    }
+}
