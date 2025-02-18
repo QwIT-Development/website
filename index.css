@@ -142,6 +142,10 @@ footer {
     margin: 0;
 }
 
+.footer-copyright a {
+    text-decoration: underline;
+}
+
 @media (max-width: 600px) {
     header {
         padding: 72px 0 !important;
