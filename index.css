@@ -122,6 +122,46 @@ main {
     z-index: 0;
 }
 
+.webnotice {
+    padding-left: max(20px, min(515px, 20vw));
+    padding-right: max(20px, min(515px, 20vw));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex: 1;
+    z-index: 0;
+    gap: 20px;
+}
+.webnotice div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 4px;
+}
+.webnotice div p, .webnotice div h1 {
+    margin: 0;
+}
+.webnotice div h1 {
+    color: var(--Text-Primary);
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.webnotice div p {
+    color: var(--Text-Secondary);
+    text-align: center;
+    font-family: 'Figtree', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+}
+
 main p {
     color: var(--Text-Secondary);
     font-family: 'Figtree', sans-serif;
