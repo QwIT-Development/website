@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
 :root {
     --Background: #0D1202;
     --Text-Primary: #EAF7CC;
@@ -19,6 +24,8 @@
 
 body {
     background: var(--Background);
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -48,6 +55,7 @@ header {
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin: 0;
 }
 
 .header-buttons-button {
@@ -102,6 +110,7 @@ main {
     justify-content: center;
     align-items: center;
     width: 100%;
+    flex: 1;
 }
 
 footer {
@@ -111,10 +120,25 @@ footer {
     align-items: flex-start;
     gap: 24px;
     opacity: 0.5;
+    padding: 80px;
 }
 
 .footer-sociallist {
     display: flex;
     align-items: center;
     gap: 12px;
+    height: 16px;
+}
+
+.footer-copyright, .footer-privacy {
+    color: var(--Text-Secondary);
+    font-family: 'Figtree', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+}
+
+.footer-copyright p, .footer-privacy p {
+    margin: 0;
 }
