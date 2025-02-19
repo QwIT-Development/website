@@ -42,7 +42,7 @@
     align-items: flex-start;
     gap: 16px;
     width: auto;
-    flex-grow: 1;
+    flex: 1 0 0;
 }
 
 .download-header {
