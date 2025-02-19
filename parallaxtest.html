@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firka Napló</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/parallax.css">
+</head>
+<body>
+<header>
+    <a href="/" class="header-logo">
+        <img src="/assets/dave.svg" alt width="40" height="40" class="hover-animate">
+        <p>Firka Napló</p>
+    </a>
+
+    <div class="header-buttons">
+        <a href="" class="header-buttons-button color-darkgreen">Github</a>
+        <a href="/downloads.html" class="header-buttons-button color-darkgreen">Letöltés</a>
+    </div>
+</header>
+
+
+<main>
+    <div class="container">
+        <div class="fixed-section">
+            <img src="/assets/showcase/welcome.png" alt class="phone-image" id="phoneImage">
+        </div>
+        <div class="content-section">
+            <div class="content-block">
+                <div>
+                    <h2>First Section</h2>
+                    <p>Scroll down to see the image change while this text scrolls normally.</p>
+                </div>
+            </div>
+            <div class="content-block">
+                <div>
+                    <h2>Second Section</h2>
+                    <p>Notice how the image on the left changed while you scrolled here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    const phoneImage = document.getElementById('phoneImage');
+    const images = ['/assets/showcase/welcome.png', '/assets/showcase/grades.png'];
+    let currentImageIndex = 0;
+
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        if (scrollPosition > windowHeight / 2 && currentImageIndex === 0) {
+            phoneImage.src = images[1];
+            currentImageIndex = 1;
+        } else if (scrollPosition <= windowHeight / 2 && currentImageIndex === 1) {
+            phoneImage.src = images[0];
+            currentImageIndex = 0;
+        }
+    });
+</script>
+
+<footer>
+    <div class="footer-sociallist">
+        <a href="">
+            <img src="/assets/socials/instagram.svg" alt="Instagram" width="16" height="16">
+        </a>
+        <a href="">
+            <img src="/assets/socials/tiktok.svg" alt="TikTok" width="16" height="16">
+        </a>
+        <a href="">
+            <img src="/assets/socials/github.svg" alt="Github" width="16" height="16">
+        </a>
+        <a href="https://discord.gg/6DvjyPAw2T">
+            <img src="/assets/socials/discord.svg" alt="Discord" width="16" height="16">
+        </a>
+    </div>
+    <div class="footer-copyright">
+        <p>Website design made by <a href="https://ysit.ee/xou">xou</a></p>
+        <p>Copyright © 2025, All Rights Reserved</p>
+    </div>
+    <div class="footer-privacy">
+        <p>Adatkezelési tájékoztató</p>
+    </div>
+</footer>
+</body>
+</html>
