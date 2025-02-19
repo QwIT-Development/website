@@ -129,9 +129,7 @@
     }
     .main-header {
         gap: 16px !important;
-    }
-    .main-header p {
-
+        width: auto !important;
     }
     .main-header-h1hider h1 {
         display: inline;
