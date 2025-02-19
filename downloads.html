@@ -41,13 +41,57 @@
                     <p class="downloader-header-version">v0.5.12b</p>
                 </div>
                 <div class="download-buttons">
-                    <a href="" class="button">
+                    <a href="javascript:void(0);" class="button" id="dropdownButton">
                         <div class="button-internal">
                             <img src="/assets/buttons/android.svg" alt="Android" width="20" height="20">
                             <p>Android</p>
                         </div>
-                        <img src="/assets/buttons/dropdown.svg" alt width="16" height="16">
+                        <img src="/assets/buttons/dropdown.svg" alt width="16" height="16" id="dropdownImg">
                     </a>
+                    <div class="download-buttons" id="dropdown" style="display: none">
+                        <a href="" class="button">
+                            <div class="button-internal">
+                                <img src="/assets/buttons/apk.svg" alt="APK" width="20" height="20">
+                                <p>APK</p>
+                            </div>
+                            <img src="/assets/buttons/open.svg" alt="open" width="16" height="16">
+                        </a>
+                        <a href="" class="button">
+                            <div class="button-internal">
+                                <img src="/assets/buttons/android.svg" alt="F-Droid" width="20" height="20">
+                                <p>F-Droid</p>
+                            </div>
+                            <img src="/assets/buttons/open.svg" alt="open" width="16" height="16">
+                        </a>
+                        <a href="" class="button disabled">
+                            <div class="button-internal">
+                                <img src="/assets/buttons/gplay.svg" alt="Google Play" width="20" height="20">
+                                <p>Google Play</p>
+                            </div>
+                            <img src="/assets/buttons/open_disabled.svg" alt="open" width="16" height="16">
+                        </a>
+                    </div>
+
+                    <script>
+                        document.getElementById('dropdownButton').addEventListener('click', function() {
+                            const dropdown = document.getElementById('dropdown');
+                            const dropdownImg = document.getElementById('dropdownImg');
+
+                            if (dropdown.style.display === 'none') {
+                                dropdown.style.display = 'flex';
+                                dropdown.classList.add('show');
+                                dropdownImg.classList.toggle('rotate');
+                            } else {
+                                dropdown.classList.remove('show');
+                                dropdownImg.classList.remove('rotate');
+
+                                setTimeout(() => {
+                                    dropdown.style.display = 'none';
+                                }, 300);
+                            }
+                        });
+                    </script>
+
                     <div class="button disabled">
                         <div class="button-internal">
                             <img src="/assets/buttons/ios.svg" alt="IOS" width="20" height="20">

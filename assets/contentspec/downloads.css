@@ -6,13 +6,10 @@
     gap: 24px;
 }
 
-body {
-    overflow: hidden;
-}
-
 .widthfixer {
     width: 100%;
 }
+
 .main-header h1 {
     color: var(--Text-Primary);
     font-family: 'Montserrat', sans-serif;
@@ -22,6 +19,7 @@ body {
     line-height: normal;
     margin: 0;
 }
+
 .main-header p {
     color: var(--Text-Secondary);
     font-family: 'Figtree', sans-serif;
@@ -109,6 +107,7 @@ body {
     align-items: center;
     gap: 8px;
 }
+
 .button-internal p {
     white-space: nowrap;
     overflow: hidden;
@@ -132,26 +131,87 @@ body {
     color: var(--Text-Teritary) !important;
 }
 
+#dropdown.show {
+    animation: slideIn 300ms ease-out forwards;
+}
+
+#dropdown:not(.show) {
+    animation: slideOut 300ms ease-out forwards;
+}
+
+#dropdownImg.rotate {
+    animation: vertical-rotate 300ms ease-out forwards;
+}
+
+#dropdownImg:not(.rotate) {
+    animation: vertical-rotate-back 300ms ease-out forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+}
+
+@keyframes vertical-rotate {
+    from {
+        transform: rotateX(0deg);
+    }
+    to {
+        transform: rotateX(180deg);
+    }
+}
+
+@keyframes vertical-rotate-back {
+    from {
+        transform: rotateX(180deg);
+    }
+    to {
+        transform: rotateX(0deg);
+    }
+}
+
 @media (max-width: 600px) {
     body {
         overflow: scroll !important;
     }
+
     .main-header h1 {
         font-size: 20px !important;
     }
+
     .main-header {
         gap: 16px !important;
         width: auto !important;
     }
+
     .main-header-h1hider h1 {
         display: inline;
         margin-right: 4px;
     }
+
     .main-downloads {
         display: flex;
         flex-direction: column;
         align-self: stretch;
     }
+
     .download-box {
         width: 100%;
     }
