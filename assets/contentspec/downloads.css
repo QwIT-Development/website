@@ -6,6 +6,10 @@
     gap: 24px;
 }
 
+body {
+    overflow: hidden;
+}
+
 .widthfixer {
     width: 100%;
 }
@@ -105,6 +109,11 @@
     align-items: center;
     gap: 8px;
 }
+.button-internal p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .button:hover {
     color: var(--Text-Primary) !important;
@@ -124,6 +133,9 @@
 }
 
 @media (max-width: 600px) {
+    body {
+        overflow: scroll !important;
+    }
     .main-header h1 {
         font-size: 20px !important;
     }
