@@ -130,8 +130,19 @@
     .main-header {
         gap: 16px !important;
     }
+    .main-header p {
+
+    }
     .main-header-h1hider h1 {
         display: inline;
         margin-right: 4px;
+    }
+    .main-downloads {
+        display: flex;
+        flex-direction: column;
+        align-self: stretch;
+    }
+    .download-box {
+        width: 100%;
     }
 }
