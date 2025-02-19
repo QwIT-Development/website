@@ -3,6 +3,7 @@
 
 * {
     box-sizing: border-box;
+    margin: 0;
 }
 
 html, body {
@@ -20,6 +21,10 @@ html, body {
     --Text-Secondary: rgba(234, 247, 204, 0.70);
     --Accent-Accent: #A7DC22;
     --Text-Primary2: #394C0A;
+    --Card-Card: #141905;
+    --accent-15: rgba(167, 220, 34, 0.15);
+    --Card-Translucent: rgba(20, 25, 5, 0.50);
+    --Text-Teritary: rgba(234, 247, 204, 0.50);
 }
 
 body {
@@ -120,6 +125,7 @@ main {
     flex: 1;
     z-index: 0;
     flex-direction: column;
+    gap: 48px;
 }
 
 .webnotice {

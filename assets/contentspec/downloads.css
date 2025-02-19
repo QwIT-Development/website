@@ -84,12 +84,13 @@
     height: 48px;
     padding: 8px 16px;
     align-items: center;
+    justify-content: space-between;
     gap: 8px;
     flex-shrink: 0;
     align-self: stretch;
     border-radius: 12px;
-    background: var(--Card-Card, #141905);
-    box-shadow: 0 1px var(--Shadow-blur, 0px) 0 var(--Accent-Shadow-color, rgba(203, 238, 113, 0.15));
+    background: var(--Card-Card);
+    box-shadow: 0 1px var(--Shadow-blur) 0 var(--Accent-Shadow-color);
     color: var(--Text-Secondary, rgba(234, 247, 204, 0.70)) !important;
     text-align: center;
     font-family: 'Figtree', sans-serif;
@@ -97,6 +98,29 @@
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
+}
+
+.button-internal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.button:hover {
+    color: var(--Text-Primary) !important;
+    background: linear-gradient(0deg, var(--accent-15) 0%, var(--accent-15) 100%), var(--Card-Card) !important;
+}
+
+/* pressing button */
+.button:active {
+    background: var(--Card-Card) !important;
+    color: var(--Text-Primary) !important;
+}
+
+.button.disabled {
+    background: var(--Card-Translucent) !important;
+    box-shadow: none !important;
+    color: var(--Text-Teritary) !important;
 }
 
 @media (max-width: 600px) {
