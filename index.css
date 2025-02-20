@@ -91,12 +91,16 @@ header * {
 
 a {
     color: inherit;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 a:visited {
     color: inherit;
-    text-decoration: none;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: var(--Text-Secondary)
 }
 
 .color-darkgreen {
