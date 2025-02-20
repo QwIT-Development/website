@@ -91,16 +91,17 @@ header * {
 
 a {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:visited {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:hover {
     color: var(--Text-Secondary)
+    text-decoration: underline;
 }
 
 .color-darkgreen {
@@ -189,7 +190,6 @@ footer {
     justify-content: flex-end;
     align-items: flex-start;
     gap: 24px;
-    opacity: 0.5;
     padding: min(80px, 5vw);
     pointer-events: none;
 }
@@ -206,7 +206,7 @@ footer * {
 }
 
 .footer-copyright, .footer-privacy {
-    color: var(--Text-Secondary);
+    color: var(--Text-Teritary);
     font-family: 'Figtree', sans-serif;
     font-size: 16px;
     font-style: normal;
