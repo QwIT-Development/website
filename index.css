@@ -38,7 +38,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1;
-    padding: min(80px, 5vw);
+    padding: min(50px, 5vw);
     display: flex;
     justify-content: space-between;
     pointer-events: none;
@@ -89,29 +89,29 @@ header * {
     line-height: 130%;
 }
 
+.color-darkgreen {
+    background: var(--Button-SecondaryFill);
+    color: var(--Text-Secondary);
+}
+
 a {
-    color: inherit;
+    color: var(--Text-Teritary);
     text-decoration: none;
 }
 
 a:visited {
-    color: inherit;
+    color: var(--Text-Teritary);
     text-decoration: none;
 }
 
 a:hover {
-    color: var(--Text-Secondary)
+    color: var(--Text-Secondary);
     text-decoration: underline;
-}
-
-.color-darkgreen {
-    background: var(--Button-SecondaryFill);
-    color: var(--Text-Secondary) !important;
 }
 
 .color-brightgreen {
     background: var(--Accent-Accent);
-    color: var(--Text-Primary2) !important;
+    color: var(--Text-Primary2);
 }
 
 .hover-animate {
@@ -141,7 +141,7 @@ main {
     flex: 1;
     z-index: 0;
     gap: 20px;
-    padding: 80px max(20px, min(515px, 20vw));
+    padding: 30px max(20px, min(515px, 20vw));
 }
 .webnotice div {
     display: flex;
@@ -190,7 +190,7 @@ footer {
     justify-content: flex-end;
     align-items: flex-start;
     gap: 24px;
-    padding: min(80px, 5vw);
+    padding: min(50px, 5vw);
     pointer-events: none;
 }
 
@@ -212,6 +212,35 @@ footer * {
     font-style: normal;
     font-weight: 500;
     line-height: 130%;
+}
+
+.header-buttons-button.color-darkgreen:hover {
+    animation: button-hover-animate 0.3s forwards;
+}
+.header-buttons-button.color-darkgreen:not(:hover) {
+    animation: button-hover-reverse 0.3s forwards;
+}
+
+@keyframes button-hover-animate {
+    0% {
+        background: var(--Button-SecondaryFill);
+        color: var(--Text-Secondary);
+    }
+    100% {
+        background: var(--Accent-Accent);
+        color: var(--Text-Primary2);
+    }
+}
+
+@keyframes button-hover-reverse {
+    0% {
+        background: var(--Accent-Accent);
+        color: var(--Text-Primary2);
+    }
+    100% {
+        background: var(--Button-SecondaryFill);
+        color: var(--Text-Secondary);
+    }
 }
 
 .footer-copyright p, .footer-privacy p {
