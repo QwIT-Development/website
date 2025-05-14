@@ -12,11 +12,13 @@
     --text_primary: #394C0A;
     --text_secondary: #394C0ACC;
     --text_teritary: #394C0A80;
+    --text_primary_button: #394C0A; /* quick fix for wrong button color */
 
     --card_card: #F3FBDE;
     --card_translucent: #F3FBDE80;
 
     --button_secondaryfill: #FEFFFD;
+    --button_primaryfill: #FEFFFD; /* another fix */
 
     --accent_accent: #A7DC22;
     --accent_secondary: #6E8F1B;

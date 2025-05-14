@@ -14,11 +14,20 @@
 {:else}
 <NavbarShared />
 {/if}
-<slot />
+<main>
+    <slot />
+</main>
 <Footer />
 
 <style>
     :global(body) {
         background: var(--background);
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
     }
 </style>

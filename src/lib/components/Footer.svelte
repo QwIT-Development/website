@@ -86,7 +86,7 @@
 	<span
 		id="themeToggle"
 		class="custom-icon-svg"
-		style="-webkit-mask-image: url(--icon); mask-image: url(--icon); background-color: currentColor;"
+		style="-webkit-mask-image: url(data:,); mask-image: url(data:,); background-color: currentColor;"
 	></span>
 </button>
 
