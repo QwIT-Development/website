@@ -170,4 +170,21 @@
 		-webkit-mask-position: center;
 		mask-position: center;
 	}
+
+	@media (max-width: 768px) {
+		footer {
+			position: static;
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			margin-bottom: 72px;
+			margin-top: 72px;
+			gap: 24px;
+		}
+		.style-switch {
+			display: none;
+		}
+	}
 </style>
