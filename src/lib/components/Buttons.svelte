@@ -35,6 +35,7 @@
 		flex-shrink: 0;
         border-radius: 22px;
         text-decoration: none;
+        transition: background 0.3s ease, color 0.3s ease;
 	}
     .button img {
         width: 16px;
