@@ -1,4 +1,5 @@
 :root {
+    /* Colors */
     --background: #FAFFF0;
     --background-0: #fafff000;
     --success: var(--grades_4);
@@ -66,4 +67,112 @@
         --error_15: #FF54A126;
         --error_card: #1E030F;
     }
+}
+
+/* Fonts */
+.font_header_h1, h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.font_header_18px {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.font_header_h2, h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.font_header_16px {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.font_header_14px {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.font_header_12px {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.font_header_16px_trimmed {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.font_body_16px_regular {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.font_body_16px_semibold {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.font_body_14px_regular {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+}
+
+.font_body_14px_semibold {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 130%;
+}
+
+.font_body_12px_regular {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130%;
+}
+
+.font_body_12px_semibold {
+    font-family: 'Figtree', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 130%;
+}
+
+.font_web_h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+}
+
+.font_web_h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.font_web_h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+}
+
+.tiny_shadow {
+    box-shadow: 0px 1px var(--shadow-blur) 0px var(--accent_shadowcolor);
 }
