@@ -7,7 +7,7 @@
 	/** @type {'small_primary' | 'small_secondary'}*/
 	export let type = 'small_secondary';
 
-	$: typeClass = `button-${type}`;
+    let typeClass = `button-${type}`;
     if (type === 'small_primary') {
         typeClass += ' font_body_14px_semibold';
     } else if (type === 'small_secondary') {
