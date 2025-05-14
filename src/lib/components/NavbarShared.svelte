@@ -16,6 +16,10 @@
 		<img src={brandingHover ? hoverLogo : normalLogo} alt="logo" />
 		<h1>Firka Napló</h1>
 	</a>
+	<p class="font_body_16px_regular">
+		A Firka Napló nem csak egy szebb kliens az eKréta borzalmai helyett, hanem egy olyan mobilapp és
+		bővítmény, ami élvezhetőbbé teszi a sulis mindennapjaidat. Ja, és ténylegesen nyílt forráskódú.
+	</p>
 </div>
 <div class="links">
 	{#each navLinks as link}
@@ -33,14 +37,14 @@
 		height: 40px;
         max-width: 278px;
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 12px;
         color: var(--text_secondary);
 	}
 
 	div.branding a {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		gap: 24px;
 		text-decoration: none;
 		color: var(--text_primary);
