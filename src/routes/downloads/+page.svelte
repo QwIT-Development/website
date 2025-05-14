@@ -1,22 +1,22 @@
 <script lang="ts">
 	import '$lib/global.css';
 	import Buttons from '$lib/components/Buttons.svelte';
-    import { onMount } from 'svelte';
-    import {downloadsClient} from './downloadsClient';
+	import { onMount } from 'svelte';
+	import { downloadsClient } from './downloadsClient';
 
 	const githubLinks = {
 		app: 'https://github.com/QwIT-Development/app-legacy',
 		extension: 'https://github.com/QwIT-Development/firka-extension'
 	};
 
-    const staticLinks = {
-        chromestore: 'https://chromewebstore.google.com/detail/firxa/emafoaifbfppcccgfmpcoheonhjnpldj',
-        firefox: 'https://github.com/QwIT-Development/firka-extension/releases/latest'
-    }
+	const staticLinks = {
+		chromestore: 'https://chromewebstore.google.com/detail/firxa/emafoaifbfppcccgfmpcoheonhjnpldj',
+		firefox: 'https://github.com/QwIT-Development/firka-extension/releases/latest'
+	};
 
-    onMount(() => {
-        downloadsClient();
-    })
+	onMount(() => {
+		downloadsClient();
+	});
 </script>
 
 <div class="main">
@@ -35,22 +35,35 @@
 			</div>
 			<Buttons label="GitHub" href={githubLinks.app} icon="ri:github-fill"></Buttons>
 			<div class="card-section">
-                <p class="font_header_14px">iOS</p>
+				<p class="font_header_14px">iOS</p>
 				<div class="section-buttons">
-                    <Buttons label="Manuális (.ipa)" type="small_primary" icon="/download.svg" href="ipadirect"></Buttons>
-                    <Buttons label="TestFlight" type="small_primary" icon="/testflight.svg" disabled={true}></Buttons>
-                </div>
+					<Buttons
+						label="Manuális (.ipa)"
+						type="small_primary"
+						icon="/download.svg"
+						href="ipadirect"
+					></Buttons>
+					<Buttons label="TestFlight" type="small_primary" icon="/testflight.svg" disabled={true}
+					></Buttons>
+				</div>
 			</div>
-            <div class="card-section">
-                <p class="font_header_14px">Android</p>
+			<div class="card-section">
+				<p class="font_header_14px">Android</p>
 				<div class="section-buttons">
-                    <Buttons label="F-Droid" type="small_primary" icon="/android.svg"></Buttons>
-                    <Buttons label="Google Play" type="small_secondary" icon="ri:google-play-fill" disabled={true}></Buttons>
-                </div>
-                <div class="section-buttons">
-                    <Buttons label="ARM64 .apk" type="small_secondary" icon="/apk.svg" href="aarm64"></Buttons>
-                    <Buttons label="Armeabi .apk" type="small_secondary" icon="/apk.svg" href="aarmeabi"></Buttons>
-                </div>
+					<Buttons label="F-Droid" type="small_primary" icon="/android.svg"></Buttons>
+					<Buttons
+						label="Google Play"
+						type="small_secondary"
+						icon="ri:google-play-fill"
+						disabled={true}
+					></Buttons>
+				</div>
+				<div class="section-buttons">
+					<Buttons label="ARM64 .apk" type="small_secondary" icon="/apk.svg" href="aarm64"
+					></Buttons>
+					<Buttons label="Armeabi .apk" type="small_secondary" icon="/apk.svg" href="aarmeabi"
+					></Buttons>
+				</div>
 			</div>
 		</div>
 		<div class="card tiny_shadow">
@@ -60,16 +73,26 @@
 			</div>
 			<Buttons label="GitHub" href={githubLinks.extension} icon="ri:github-fill"></Buttons>
 			<div class="card-section">
-                <p class="font_header_14px">Chromium (Chrome, Edge, stb.)</p>
+				<p class="font_header_14px">Chromium (Chrome, Edge, stb.)</p>
 				<div class="section-buttons">
-                    <Buttons label="Chrome Web Store" type="small_secondary" icon="ri:chrome-fill" href={staticLinks.chromestore}></Buttons>
-                </div>
+					<Buttons
+						label="Chrome Web Store"
+						type="small_secondary"
+						icon="ri:chrome-fill"
+						href={staticLinks.chromestore}
+					></Buttons>
+				</div>
 			</div>
-            <div class="card-section">
-                <p class="font_header_14px">Firefox</p>
+			<div class="card-section">
+				<p class="font_header_14px">Firefox</p>
 				<div class="section-buttons">
-                    <Buttons label="Firefox Add-ons" type="small_secondary" icon="ri:firefox-browser-fill" href="firefox"></Buttons>
-                </div>
+					<Buttons
+						label="Firefox Add-ons"
+						type="small_secondary"
+						icon="ri:firefox-browser-fill"
+						href="firefox"
+					></Buttons>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -137,9 +160,9 @@
 		align-self: stretch;
 	}
 
-    .card-section p {
-        color: var(--text_secondary);
-    }
+	.card-section p {
+		color: var(--text_secondary);
+	}
 
 	.section-buttons {
 		display: flex;
@@ -150,8 +173,32 @@
 		flex-wrap: wrap;
 	}
 
-    /* it is 1440, bc it looks bad with the big ass text, so i did this */
-    @media (max-width: 1440) {
-
-    }
+	/* it is 1440, bc it looks bad with the big ass text, so i did this */
+	@media (max-width: 1440px) {
+		div.main {
+			display: flex;
+			width: 100vw;
+			flex-direction: column;
+			align-items: center;
+			gap: 40px;
+		}
+		div.title {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 12px;
+			align-self: auto;
+			text-align: center;
+		}
+		div.cards {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 20px;
+			align-self: auto;
+		}
+        div.card {
+            width: 336px;
+        }
+	}
 </style>
