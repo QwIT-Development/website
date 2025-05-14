@@ -1,9 +1,7 @@
 <script lang="ts">
-    import '$lib/global.css';
+    import {goto} from '$app/navigation';
+    import {onMount} from 'svelte';
+    onMount(() => {
+        goto('/downloads');
+    })
 </script>
-
-<style>
-    :global(body) {
-        background: var(--background);
-    }
-</style>
