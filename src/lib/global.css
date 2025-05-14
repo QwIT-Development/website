@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
 :root {
     /* Colors */
     --background: #FAFFF0;
@@ -175,4 +178,10 @@
 
 .tiny_shadow {
     box-shadow: 0px 1px var(--shadow-blur) 0px var(--accent_shadowcolor);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
