@@ -3,7 +3,7 @@
     import Buttons from '$lib/components/Buttons.svelte';
 
     const navLinks: { name: string; url: string; style: "small_secondary" | "small_primary" }[] = [
-        { name: 'Github', url: 'https://github.com/QwIT-Development', style: 'small_secondary'},
+        { name: 'GitHub', url: 'https://github.com/QwIT-Development', style: 'small_secondary'},
         { name: 'Letöltés', url: '/downloads', style: 'small_primary'}
     ];
 </script>
