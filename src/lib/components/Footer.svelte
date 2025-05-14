@@ -26,11 +26,11 @@
 		htmlElement.classList.toggle('dark-mode');
 		themeToggle?.style.setProperty(
 			'-webkit-mask-image',
-			htmlElement.classList.contains('dark-mode') ? 'url(/moon.svg)' : 'url(/sun.svg)'
+			htmlElement.classList.contains('dark-mode') ? 'url(/sun.svg)' : 'url(/moon.svg)'
 		);
 		themeToggle?.style.setProperty(
 			'mask-image',
-			htmlElement.classList.contains('dark-mode') ? 'url(/moon.svg)' : 'url(/sun.svg)'
+			htmlElement.classList.contains('dark-mode') ? 'url(/sun.svg)' : 'url(/moon.svg)'
 		);
 	}
 
@@ -41,8 +41,8 @@
 		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 		if (prefersDarkScheme.matches) {
 			htmlElement.classList.add('dark-mode');
-			themeToggle?.style.setProperty('-webkit-mask-image', 'url(/moon.svg)');
-			themeToggle?.style.setProperty('mask-image', 'url(/moon.svg)');
+			themeToggle?.style.setProperty('-webkit-mask-image', 'url(/sun.svg)');
+			themeToggle?.style.setProperty('mask-image', 'url(/sun.svg)');
 		}
 	});
 </script>
