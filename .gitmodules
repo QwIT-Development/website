@@ -1,0 +1,3 @@
+[submodule "src/routes/docs/content"]
+	path = src/routes/docs/content
+	url = https://github.com/QwIT-Development/Docs.git
