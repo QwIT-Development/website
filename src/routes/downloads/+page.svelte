@@ -177,7 +177,7 @@
 	@media (max-width: 1440px) {
 		div.main {
 			display: flex;
-			width: 100vw;
+			width: 100%;
 			flex-direction: column;
 			align-items: center;
 			gap: 40px;
