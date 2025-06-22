@@ -35,7 +35,6 @@
     @media (max-width: 768px) {
         main {
             min-height: auto;
-            display: block;
             padding: 0 20px 0 20px;
         }
     }
