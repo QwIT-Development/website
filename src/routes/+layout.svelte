@@ -20,6 +20,9 @@
 <Footer />
 
 <style>
+    :global(html) {
+        scroll-behavior: smooth;
+    }
     :global(body) {
         background: var(--background);
     }

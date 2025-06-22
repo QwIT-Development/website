@@ -19,7 +19,7 @@
 	});
 </script>
 
-<div class="main">
+<div class="main" id="anchor-downloads">
 	<div class="title">
 		<h2 class="font_web_h2">Töltsd le a Firka Naplót</h2>
 		<p class="font_body_16px_regular">
