@@ -5,4 +5,3 @@ export const navLinks: { name: string; url: string; style: 'small_secondary' | '
 ];
 
 export const normalLogo = '/dave.svg';
-export const hoverLogo = '/dave-hover.gif';

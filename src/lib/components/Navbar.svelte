@@ -1,9 +1,18 @@
 <script lang="ts">
+	import {onMount} from 'svelte';
 	import '$lib/global.css';
 	import Buttons from '$lib/components/Buttons.svelte';
 	let brandingHover = false;
 
-	import {navLinks, hoverLogo, normalLogo} from '$lib/components/Navbar';
+	import {navLinks, normalLogo} from '$lib/components/Navbar';
+	let hoverLogo = '/dave-hover.gif';
+
+	onMount(() => {
+        const currentMonth = new Date().getMonth();
+        if (currentMonth === 5) {
+            hoverLogo = '/dave-hover.pride.gif';
+        }
+    });
 </script>
 
 <nav>
