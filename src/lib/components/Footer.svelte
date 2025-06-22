@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 
 	let year = new Date().getFullYear();
+	let easterEggActive = false;
 
 	const links = [
 		{ icon: 'ri:bluesky-fill', href: 'https://bsky.app/profile/firka.app', label: 'Bluesky' },
@@ -21,8 +22,37 @@
 	}
 
 	function toggleTheme() {
-		const htmlElement = document.documentElement;
+		const button = document.querySelector('.style-switch') as HTMLButtonElement;
 		const themeToggle = document.getElementById('themeToggle');
+		const htmlElement = document.documentElement;
+
+		if (Math.random() < 0.05) {
+			easterEggActive = true;
+			htmlElement.classList.add('dark-mode');
+			if (themeToggle) {
+				(themeToggle as HTMLElement).style.display = 'none';
+			}
+			if (button) {
+				button.style.borderRadius = '90px';
+				button.style.background =
+					'url(/cipzar.png) 50% / cover no-repeat, var(--button_secondaryfill)';
+				button.style.backgroundBlendMode = 'luminosity, normal';
+			}
+			return;
+		}
+
+		if (easterEggActive) {
+			easterEggActive = false;
+			if (themeToggle) {
+				(themeToggle as HTMLElement).style.display = '';
+			}
+			if (button) {
+				button.style.borderRadius = '';
+				button.style.background = '';
+				button.style.backgroundBlendMode = '';
+			}
+		}
+
 		htmlElement.classList.toggle('dark-mode');
 		themeToggle?.style.setProperty(
 			'-webkit-mask-image',
