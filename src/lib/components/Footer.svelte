@@ -26,17 +26,26 @@
 		const themeToggle = document.getElementById('themeToggle');
 		const htmlElement = document.documentElement;
 
-		if (Math.random() < 0.05) {
+		const pfps = [
+			"c5b487b54a2cd32d7a1532b71e277c4f",
+			"00fceb32d3b3a40215ab3424f0815eb2",
+			"6a0e6d74d10119476b50cb235a7cc955",
+			"94edbcd38b918e8aff114c2801be11f3",
+			"920ea4fcc04abe6955ac6d42e88f23eb",
+			"32c93b147a6f8bb54416cb0694f469c6"
+		]
+
+		if (Math.random() < 0.05 && !htmlElement.classList.contains('dark-mode')) {
 			easterEggActive = true;
 			htmlElement.classList.add('dark-mode');
 			if (themeToggle) {
 				(themeToggle as HTMLElement).style.display = 'none';
 			}
 			if (button) {
+				const name = pfps[Math.floor(Math.random() * pfps.length)];
 				button.style.borderRadius = '90px';
 				button.style.background =
-					'url(/cipzar.png) 50% / cover no-repeat, var(--button_secondaryfill)';
-				button.style.backgroundBlendMode = 'luminosity, normal';
+					`url(/pfps/${name}.png) 100% / cover no-repeat`;
 			}
 			return;
 		}
@@ -64,17 +73,21 @@
 		);
 	}
 
-	onMount(() => {
-		const htmlElement = document.documentElement;
-		const themeToggle = document.getElementById('themeToggle');
-		// check if the user has a theme preference
-		const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-		if (prefersDarkScheme.matches) {
-			htmlElement.classList.add('dark-mode');
-			themeToggle?.style.setProperty('-webkit-mask-image', 'url(/sun.svg)');
-			themeToggle?.style.setProperty('mask-image', 'url(/sun.svg)');
-		}
-	});
+    onMount(() => {
+        const htmlElement = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersLightScheme = window.matchMedia('(prefers-color-scheme: light)');
+
+        if (prefersLightScheme.matches) {
+            htmlElement.classList.remove('dark-mode');
+            themeToggle?.style.setProperty('-webkit-mask-image', 'url(/moon.svg)');
+            themeToggle?.style.setProperty('mask-image', 'url(/moon.svg)');
+        } else {
+            htmlElement.classList.add('dark-mode');
+            themeToggle?.style.setProperty('-webkit-mask-image', 'url(/sun.svg)');
+            themeToggle?.style.setProperty('mask-image', 'url(/sun.svg)');
+        }
+    });
 </script>
 
 <footer class="font_body_16px_regular">
@@ -212,9 +225,6 @@
 			margin-bottom: 72px;
 			margin-top: 72px;
 			gap: 24px;
-		}
-		.style-switch {
-			display: none;
 		}
 	}
 </style>
