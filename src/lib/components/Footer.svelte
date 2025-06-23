@@ -226,5 +226,9 @@
 			margin-top: 72px;
 			gap: 24px;
 		}
+		.style-switch {
+			right: 24px;
+			bottom: 24px;
+		}
 	}
 </style>

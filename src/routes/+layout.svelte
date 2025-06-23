@@ -11,20 +11,32 @@
 
 
     // the website breaks if THE coconut is not present
-	onMount(() => {
-		const resources = performance.getEntriesByType('resource');
-		const resourceEntry = resources.find((entry) => {
-			const resource = entry as PerformanceResourceTiming;
-			return resource.name.endsWith('/coconut.png') && resource.initiatorType === 'link';
-		});
+    onMount(() => {
+        const checkCoconut = () => {
+            const resources = performance.getEntriesByType('resource');
+            const resourceEntry = resources.find((entry) => {
+                const resource = entry as PerformanceResourceTiming;
+                return resource.name.endsWith('/coconut.png') && resource.initiatorType === 'link';
+            });
 
-		if (!resourceEntry) {
-			const html = document.querySelector('html');
-			if (html) {
-				html.innerHTML = '';
-			}
-		}
-	});
+            if (!resourceEntry) {
+                const html = document.querySelector('html');
+                if (html) {
+                    html.innerHTML = '';
+                }
+            }
+        };
+
+        if (document.readyState === 'complete') {
+            checkCoconut();
+        } else {
+            window.addEventListener('load', checkCoconut);
+        }
+
+        return () => {
+            window.removeEventListener('load', checkCoconut);
+        };
+    });
 </script>
 
 {#if $isIndexPage}

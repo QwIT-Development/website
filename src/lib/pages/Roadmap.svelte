@@ -216,7 +216,6 @@
 			width: 100%;
 			flex-direction: column;
 			align-items: center;
-			padding: 0 24px;
 			gap: 40px;
 		}
 		.content {

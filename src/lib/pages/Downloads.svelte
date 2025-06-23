@@ -189,13 +189,13 @@
 			gap: 12px;
 			align-self: auto;
 			text-align: center;
+			width: 336px;
 		}
 		div.cards {
 			display: flex;
 			flex-direction: column;
-			align-items: flex-start;
+			align-items: center;
 			gap: 20px;
-			align-self: auto;
 		}
         div.card {
             width: 336px;
