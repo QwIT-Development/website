@@ -3,10 +3,11 @@
 
 	export let icon = '';
 	export let label = 'link';
-	export let href = '/';
+	export let href: null | string = null;
 	/** @type {'small_primary' | 'small_secondary'}*/
 	export let type = 'small_secondary';
 	export let disabled = false;
+	export let id: null | string = null;
 
 	let typeClass = `button-${type}`;
 	if (type === 'small_primary') {
@@ -15,53 +16,53 @@
 		typeClass += ' font_body_14px_regular';
 	}
 
-    function formatIconClass(iconName: string): string {
+	function formatIconClass(iconName: string): string {
 		return iconName.replace(':', '-');
 	}
 </script>
 
 {#if !disabled}
-<a {href} class="button {typeClass} tiny-shadow" {...$$restProps}>
-	<slot>
-		{#if icon}
-            {#if icon.startsWith('ri:')}
-                <span
-                    class={formatIconClass(icon)}
-                    aria-label={label}
-                    role="img"
-                    style="width: 16px; height: 16px;"
-                ></span>
-            {:else}
-			<span
-				class="custom-icon-svg"
-				style="-webkit-mask-image: url({icon}); mask-image: url({icon}); background-color: currentColor;"
-			></span>
-            {/if}
-		{/if}
-		<p>{label}</p>
-	</slot>
-</a>
+	<a {href} {id} class="button {typeClass} tiny-shadow" {...$$restProps}>
+		<slot>
+			{#if icon}
+				{#if icon.startsWith('ri:')}
+					<span
+						class={formatIconClass(icon)}
+						aria-label={label}
+						role="img"
+						style="width: 16px; height: 16px;"
+					></span>
+				{:else}
+					<span
+						class="custom-icon-svg"
+						style="-webkit-mask-image: url({icon}); mask-image: url({icon}); background-color: currentColor;"
+					></span>
+				{/if}
+			{/if}
+			<p>{label}</p>
+		</slot>
+	</a>
 {:else}
-<div class="button {typeClass} tiny-shadow disabled" {...$$restProps}>
-	<slot>
-		{#if icon}
-            {#if icon.startsWith('ri:')}
-                <span
-                    class={formatIconClass(icon)}
-                    aria-label={label}
-                    role="img"
-                    style="width: 16px; height: 16px;"
-                ></span>
-            {:else}
-			<span
-				class="custom-icon-svg"
-				style="-webkit-mask-image: url({icon}); mask-image: url({icon}); background-color: currentColor;"
-			></span>
-            {/if}
-		{/if}
-		<p>{label}</p>
-	</slot>
-</div>
+	<div class="button {typeClass} tiny-shadow disabled" {...$$restProps}>
+		<slot>
+			{#if icon}
+				{#if icon.startsWith('ri:')}
+					<span
+						class={formatIconClass(icon)}
+						aria-label={label}
+						role="img"
+						style="width: 16px; height: 16px;"
+					></span>
+				{:else}
+					<span
+						class="custom-icon-svg"
+						style="-webkit-mask-image: url({icon}); mask-image: url({icon}); background-color: currentColor;"
+					></span>
+				{/if}
+			{/if}
+			<p>{label}</p>
+		</slot>
+	</div>
 {/if}
 
 <style>
@@ -102,7 +103,7 @@
 		background: var(--button_primaryfill);
 	}
 
-    .custom-icon-svg {
+	.custom-icon-svg {
 		display: inline-block;
 		width: 16px;
 		height: 16px;

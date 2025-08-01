@@ -11,7 +11,7 @@
 
 	const staticLinks = {
 		chromestore: 'https://chromewebstore.google.com/detail/firxa/emafoaifbfppcccgfmpcoheonhjnpldj',
-		firefox: 'https://github.com/QwIT-Development/firka-extension/releases/latest'
+		firefox: 'https://addons.mozilla.org/hu/firefox/addon/firxa/'
 	};
 
 	onMount(() => {
@@ -37,11 +37,7 @@
 			<div class="card-section">
 				<p class="font_header_14px">iOS</p>
 				<div class="section-buttons">
-					<Buttons
-						label="Manuális (.ipa)"
-						type="small_primary"
-						icon="/download.svg"
-						href="ipadirect"
+					<Buttons id="ipa" label="Manuális (.ipa)" type="small_primary" icon="/download.svg"
 					></Buttons>
 					<Buttons label="TestFlight" type="small_primary" icon="/testflight.svg" disabled={true}
 					></Buttons>
@@ -50,7 +46,8 @@
 			<div class="card-section">
 				<p class="font_header_14px">Android</p>
 				<div class="section-buttons">
-					<Buttons label="F-Droid" type="small_primary" icon="/android.svg"></Buttons>
+					<Buttons label="F-Droid" type="small_primary" icon="/android.svg" disabled={true}
+					></Buttons>
 					<Buttons
 						label="Google Play"
 						type="small_secondary"
@@ -59,9 +56,8 @@
 					></Buttons>
 				</div>
 				<div class="section-buttons">
-					<Buttons label="ARM64 .apk" type="small_secondary" icon="/apk.svg" href="aarm64"
-					></Buttons>
-					<Buttons label="Armeabi .apk" type="small_secondary" icon="/apk.svg" href="aarmeabi"
+					<Buttons id="arm64" label="ARM64 .apk" type="small_secondary" icon="/apk.svg"></Buttons>
+					<Buttons id="armeabi" label="Armeabi .apk" type="small_secondary" icon="/apk.svg"
 					></Buttons>
 				</div>
 			</div>
@@ -90,7 +86,7 @@
 						label="Firefox Add-ons"
 						type="small_secondary"
 						icon="ri:firefox-browser-fill"
-						href="firefox"
+						href={staticLinks.firefox}
 					></Buttons>
 				</div>
 			</div>
@@ -197,8 +193,8 @@
 			align-items: center;
 			gap: 20px;
 		}
-        div.card {
-            width: 336px;
-        }
+		div.card {
+			width: 336px;
+		}
 	}
 </style>
