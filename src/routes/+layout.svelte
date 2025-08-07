@@ -5,38 +5,8 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import { page } from '$app/stores';
 	import { derived } from 'svelte/store';
-	import { onMount } from 'svelte';
 
 	const isIndexPage = derived(page, ($page) => $page?.route?.id === '/');
-
-
-    // the website breaks if THE coconut is not present
-    onMount(() => {
-        const checkCoconut = () => {
-            const resources = performance.getEntriesByType('resource');
-            const resourceEntry = resources.find((entry) => {
-                const resource = entry as PerformanceResourceTiming;
-                return resource.name.endsWith('/coconut.png') && resource.initiatorType === 'link';
-            });
-
-            if (!resourceEntry) {
-                const html = document.querySelector('html');
-                if (html) {
-                    html.innerHTML = '';
-                }
-            }
-        };
-
-        if (document.readyState === 'complete') {
-            checkCoconut();
-        } else {
-            window.addEventListener('load', checkCoconut);
-        }
-
-        return () => {
-            window.removeEventListener('load', checkCoconut);
-        };
-    });
 </script>
 
 {#if $isIndexPage}
