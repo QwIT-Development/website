@@ -4,7 +4,7 @@
 
 	onMount(() => {});
 
-    // szabadalmaztatott EZ Edit 3 object
+	// szabadalmaztatott EZ Edit 3 object
 	const roadmap = [
 		{
 			title: 'Már elérhető',
@@ -15,13 +15,12 @@
 				{
 					title: 'ALAP',
 					items: [
-						'Jegyek száma és aránya'
+						'Bejelentkezési képernyő',
+						'Kezdőlapon tanórákról információ',
+						'Jegyek száma és aránya',
+						'Órarend'
 					]
 				}
-/*				{
-					title: 'EXAMPLE TITLE',
-					items: ['example item', 'another item']
-				}*/
 			]
 		},
 		{
@@ -30,11 +29,25 @@
 			cardClass: '',
 			itemClass: 'soon',
 			sections: [
-                {
+				{
 					title: null,
-					items: ['TODO: fill out this', 'zypherift ez neked szol']
+					items: [
+						'Kezdőlap',
+						'Órarendben dolgozatok, óra témája, stb.',
+						'Órarend havi nézet',
+						'Órarend beállításai',
+						'"Tőbb" menüpont',
+						'Mulasztások',
+						'Beállítások',
+						'Navigációs sáv testreszabása',
+						'Személyreszabás',
+						'Balkezes mód',
+						'Témák',
+						'App ikonok',
+						'Jegyek mentése'
+					]
 				}
-            ]
+			]
 		},
 		{
 			title: 'Később',
@@ -44,7 +57,12 @@
 			sections: [
 				{
 					title: null,
-					items: ['TODO: fill out this']
+					items: [
+						'Jegyekhez grafikon',
+						'Értesítések',
+						'Extrák',
+						'Naptár szinkronizálása'
+					]
 				}
 			]
 		}
