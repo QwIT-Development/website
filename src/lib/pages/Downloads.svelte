@@ -37,8 +37,9 @@
 			<div class="card-section">
 				<p class="font_header_14px">Android</p>
 				<div class="section-buttons">
-					<Buttons label="F-Droid" type="small_primary" icon="/android.svg" disabled={true}
-					></Buttons>
+					<Buttons label="F-Droid" type="small_primary"
+									 href="https://repo.firka.app/fdroid/repo?fingerprint=C5656F50D80497CE659DB2E88F436114DE617A09B66980D2226DF9D042AE2925"
+									 icon="/android.svg" disabled={true} ></Buttons>
 					<Buttons
 						label="Google Play"
 						type="small_secondary"
@@ -52,9 +53,15 @@
 						label="arm64.apk"
 						type="small_secondary"
 						icon="/apk.svg"
-						disabled={true}></Buttons>
-					<Buttons id="armeabi" label="armeabi.apk" type="small_secondary" icon="/apk.svg" disabled={true}
-					></Buttons>
+						href="https://repo.firka.app/fdroid/repo/app.firka.naplo_arm64-v8a.apk"
+						disabled={true} ></Buttons>
+					<Buttons
+						id="armeabi"
+						label="armeabi.apk"
+						type="small_secondary"
+						icon="/apk.svg"
+						href="https://repo.firka.app/fdroid/repo/app.firka.naplo_armeabi-v7a.apk"
+						disabled={true} ></Buttons>
 				</div>
 			</div>
 			<div class="card-section">
