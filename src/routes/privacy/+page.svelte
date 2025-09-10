@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Firka - Privacy Policy</title>
+</svelte:head>
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import HuPolicy from './hu.svelte';

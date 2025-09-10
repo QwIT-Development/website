@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Firka - Adatkezelési Tájékoztató</title>
+</svelte:head>
+
 <main>
 	<div class="title">
 		<h2 class="font_web_h2">Adatkezelési Tájékoztató</h2>

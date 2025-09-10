@@ -1,3 +1,7 @@
+<svelte:head>
+	<title>Firka</title>
+</svelte:head>
+
 <script lang="ts">
     import Downloads from '$lib/pages/Downloads.svelte';
     import Roadmap from '$lib/pages/Roadmap.svelte';
