@@ -25,10 +25,6 @@
 		<img src={brandingHover ? hoverLogo : normalLogo} alt="logo" />
 		<h1>Firka Napló</h1>
 	</a>
-	<p class="font_body_16px_regular">
-		A Firka Napló nem csak egy szebb kliens az eKréta borzalmai helyett, hanem egy olyan mobilapp és
-		bővítmény, ami élvezhetőbbé teszi a sulis mindennapjaidat. Ja, és ténylegesen nyílt forráskódú.
-	</p>
 </div>
 <div class="links">
 	{#each navLinks as link}
@@ -75,7 +71,7 @@
 		height: 40px;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 825px) {
         nav {
             margin-bottom: 72px;
         }

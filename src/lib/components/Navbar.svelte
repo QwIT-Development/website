@@ -71,7 +71,7 @@
 		height: 40px;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 825px) {
         nav {
             margin-bottom: 72px;
         }
