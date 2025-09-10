@@ -34,14 +34,6 @@
 				<h2 class="font_header_h2">Alkalmazás</h2>
 				<p class="font_body_16px_regular" id="app-ver"></p>
 			</div>
-			<Buttons label="GitHub" href={githubLinks.app} icon="ri:github-fill"></Buttons>
-			<div class="card-section">
-				<p class="font_header_14px">iOS</p>
-				<div class="section-buttons">
-					<Buttons label="TestFlight" type="small_primary" icon="/testflight.svg" disabled={true}
-					></Buttons>
-				</div>
-			</div>
 			<div class="card-section">
 				<p class="font_header_14px">Android</p>
 				<div class="section-buttons">
@@ -65,13 +57,25 @@
 					></Buttons>
 				</div>
 			</div>
+			<div class="card-section">
+				<p class="font_header_14px">iOS</p>
+				<div class="section-buttons">
+					<Buttons label="TestFlight" type="small_primary" icon="/testflight.svg" disabled={true}
+					></Buttons>
+				</div>
+			</div>
+			<div class="card-section">
+				<p class="font_header_14px">Forráskód</p>
+				<div class="section-buttons">
+					<Buttons label="GitHub" href={githubLinks.app} icon="ri:github-fill"></Buttons>
+				</div>
+			</div>
 		</div>
 		<div class="card tiny_shadow">
 			<div class="card-header">
 				<h2 class="font_header_h2">Bővítmény</h2>
 				<p class="font_body_16px_regular" id="ext-ver"></p>
 			</div>
-			<Buttons label="GitHub" href={githubLinks.extension} icon="ri:github-fill"></Buttons>
 			<div class="card-section">
 				<p class="font_header_14px">Chromium (Chrome, Edge, stb.)</p>
 				<div class="section-buttons">
@@ -92,6 +96,12 @@
 						icon="ri:firefox-browser-fill"
 						href={staticLinks.firefox}
 					></Buttons>
+				</div>
+			</div>
+			<div class="card-section">
+				<p class="font_header_14px">Forráskód</p>
+				<div class="section-buttons">
+					<Buttons label="GitHub" href={githubLinks.extension} icon="ri:github-fill"></Buttons>
 				</div>
 			</div>
 		</div>
