@@ -2,7 +2,7 @@
 	import '$lib/global.css';
 	import Buttons from '$lib/components/Buttons.svelte';
 	import { onMount } from 'svelte';
-	import { downloadsClient } from '$lib/downloadsClient';
+	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
 	const githubLinks = {
 		app: 'https://github.com/QwIT-Development/firka',
@@ -15,6 +15,7 @@
 	};
 
 	onMount(() => {
+		checkCache();
 		downloadsClient();
 	});
 </script>

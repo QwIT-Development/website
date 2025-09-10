@@ -1,8 +1,20 @@
 let latestAppVersion;
 let latestExtVersion;
 
+export function checkCache() {
+	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
+	const appVerElement = document.getElementById('app-ver') as HTMLElement;
+
+	const appVersionCache = localStorage.getItem('latestAppVersion');
+	const extVersionCache = localStorage.getItem('latestExtVersion');
+
+	if (appVersionCache) appVerElement.innerText = appVersionCache;
+	if (extVersionCache) extVerElement.innerText = extVersionCache;
+}
+
 export async function downloadsClient() {
-	const extVerElement = document.getElementById('ext-ver');
+	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
+	const appVerElement = document.getElementById('app-ver') as HTMLElement;
 
 	let resp = await fetch('/api/getappversion', {
 		method: 'GET'
@@ -17,7 +29,8 @@ export async function downloadsClient() {
 	latestAppVersion = app.version;
 	latestExtVersion = ext.version;
 
-	const appVerElement = document.getElementById('app-ver');
+	localStorage.setItem('latestAppVersion', latestAppVersion);
+	localStorage.setItem('latestExtVersion', latestExtVersion);
 
 	if (extVerElement) {
 		extVerElement.innerText = latestExtVersion;
