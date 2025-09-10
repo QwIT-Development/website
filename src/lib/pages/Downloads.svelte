@@ -5,7 +5,7 @@
 	import { downloadsClient } from '$lib/downloadsClient';
 
 	const githubLinks = {
-		app: 'https://github.com/QwIT-Development/app-legacy',
+		app: 'https://github.com/QwIT-Development/firka',
 		extension: 'https://github.com/QwIT-Development/firka-extension'
 	};
 
@@ -31,14 +31,12 @@
 		<div class="card tiny_shadow">
 			<div class="card-header">
 				<h2 class="font_header_h2">Alkalmazás</h2>
-				<p class="font_body_16px_regular" id="app-ver">unknown</p>
+				<p class="font_body_16px_regular" id="app-ver"></p>
 			</div>
 			<Buttons label="GitHub" href={githubLinks.app} icon="ri:github-fill"></Buttons>
 			<div class="card-section">
 				<p class="font_header_14px">iOS</p>
 				<div class="section-buttons">
-					<Buttons id="ipa" label="Manuális (.ipa)" type="small_primary" icon="/download.svg"
-					></Buttons>
 					<Buttons label="TestFlight" type="small_primary" icon="/testflight.svg" disabled={true}
 					></Buttons>
 				</div>
@@ -56,8 +54,13 @@
 					></Buttons>
 				</div>
 				<div class="section-buttons">
-					<Buttons id="arm64" label="ARM64 .apk" type="small_secondary" icon="/apk.svg"></Buttons>
-					<Buttons id="armeabi" label="Armeabi .apk" type="small_secondary" icon="/apk.svg"
+					<Buttons
+						id="arm64"
+						label="arm64.apk"
+						type="small_secondary"
+						icon="/apk.svg"
+						disabled={true}></Buttons>
+					<Buttons id="armeabi" label="armeabi.apk" type="small_secondary" icon="/apk.svg" disabled={true}
 					></Buttons>
 				</div>
 			</div>
@@ -65,7 +68,7 @@
 		<div class="card tiny_shadow">
 			<div class="card-header">
 				<h2 class="font_header_h2">Bővítmény</h2>
-				<p class="font_body_16px_regular" id="ext-ver">unknown</p>
+				<p class="font_body_16px_regular" id="ext-ver"></p>
 			</div>
 			<Buttons label="GitHub" href={githubLinks.extension} icon="ri:github-fill"></Buttons>
 			<div class="card-section">
@@ -102,6 +105,7 @@
 		align-items: flex-start;
 		gap: 48px;
 	}
+
 	div.title {
 		display: flex;
 		width: 400px;
@@ -109,9 +113,11 @@
 		align-items: flex-start;
 		gap: 24px;
 	}
+
 	.title h2 {
 		color: var(--text_primary);
 	}
+
 	.title p {
 		color: var(--text_secondary);
 	}
@@ -169,8 +175,8 @@
 		flex-wrap: wrap;
 	}
 
-	/* it is 1440, bc it looks bad with the big ass text, so i did this */
-	@media (max-width: 1440px) {
+
+	@media (max-width: 1540px) {
 		div.main {
 			display: flex;
 			width: 100%;
@@ -178,6 +184,7 @@
 			align-items: center;
 			gap: 40px;
 		}
+
 		div.title {
 			display: flex;
 			flex-direction: column;
@@ -187,12 +194,14 @@
 			text-align: center;
 			width: 336px;
 		}
+
 		div.cards {
 			display: flex;
 			flex-direction: column;
 			align-items: center;
 			gap: 20px;
 		}
+
 		div.card {
 			width: 336px;
 		}

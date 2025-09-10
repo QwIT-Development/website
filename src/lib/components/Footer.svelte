@@ -214,10 +214,16 @@
 		mask-position: center;
 	}
 
-	@media (max-width: 768px) {
+  @media (max-width: 1048px) {
+      footer {
+          width: 200px;
+      }
+  }
+
+
+	@media (max-width: 825px) {
 		footer {
 			position: static;
-			width: 100%;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -225,6 +231,7 @@
 			margin-bottom: 72px;
 			margin-top: 72px;
 			gap: 24px;
+			width: 100%;
 		}
 		.style-switch {
 			right: 24px;

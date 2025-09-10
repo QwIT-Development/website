@@ -110,7 +110,7 @@
 			gap: 40px;
 		}
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 825px) {
 		main {
 			width: 100%;
 		}

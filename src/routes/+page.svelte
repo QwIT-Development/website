@@ -20,7 +20,7 @@
         gap: 120px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 825px) {
         main {
             gap: 72px;
         }

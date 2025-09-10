@@ -1,3 +1,6 @@
+<script>
+</script>
+
 <svelte:head>
 	<title>Firka - Adatkezelési Tájékoztató</title>
 </svelte:head>
@@ -91,7 +94,7 @@
 			gap: 40px;
 		}
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 825px) {
 		main {
 			width: 100%;
 		}

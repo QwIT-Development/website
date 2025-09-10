@@ -18,7 +18,15 @@
 						'Bejelentkezési képernyő',
 						'Kezdőlapon tanórákról információ',
 						'Jegyek száma és aránya',
-						'Órarend'
+						'Órarend',
+						'Órarend havi nézet',
+						'Órarend beállításai',
+					]
+				},
+				{
+					title: "Extrák",
+					items: [
+						'App ikonok',
 					]
 				}
 			]
@@ -34,8 +42,6 @@
 					items: [
 						'Kezdőlap',
 						'Órarendben dolgozatok, óra témája, stb.',
-						'Órarend havi nézet',
-						'Órarend beállításai',
 						'"Tőbb" menüpont',
 						'Mulasztások',
 						'Beállítások',
@@ -43,7 +49,6 @@
 						'Személyreszabás',
 						'Balkezes mód',
 						'Témák',
-						'App ikonok',
 						'Jegyek mentése'
 					]
 				}
@@ -89,7 +94,7 @@
 					{/if}
 					{#each section.items as item}
 						<div class="item">
-							<div class="checkmark {mainCard.itemClass}" />
+							<div class="checkmark {mainCard.itemClass}"></div>
 							<p class="item-name font_body_16px_regular">{item}</p>
 						</div>
 					{/each}
@@ -110,7 +115,7 @@
 							{/if}
 							{#each section.items as item}
 								<div class="item">
-									<div class="checkmark {card.itemClass}" />
+									<div class="checkmark {card.itemClass}"></div>
 									<p class="item-name font_body_16px_regular">{item}</p>
 								</div>
 							{/each}
@@ -197,18 +202,21 @@
 	.title h2 {
 		color: var(--text_primary);
 	}
+
 	main {
 		display: inline-flex;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 32px;
 	}
+
 	div.content {
 		display: flex;
-		align-items: flex-start;
+		align-items: stretch;
 		gap: 20px;
 		align-self: stretch;
-	}
+  }
+
 	div.card {
 		display: flex;
 		width: 400px;
@@ -221,14 +229,16 @@
 		background: var(--card_card);
 		flex-shrink: 0;
 	}
+
 	div.card.disabled {
 		background: var(--Card-Translucent);
 	}
+
 	div.card.disabled * {
 		opacity: 0.5;
 	}
 
-	@media (max-width: 1440px) {
+	@media (max-width: 1540px) {
 		main {
 			display: flex;
 			width: 100%;
@@ -236,9 +246,12 @@
 			align-items: center;
 			gap: 40px;
 		}
+
 		.content {
 			display: flex;
 			overflow-x: auto;
+			flex-direction: column;
+			align-items: center;
 			-webkit-overflow-scrolling: touch;
 			scrollbar-width: none;
 			width: 336px;
