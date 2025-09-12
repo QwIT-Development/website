@@ -102,6 +102,7 @@
 						type="small_secondary"
 						icon="ri:firefox-browser-fill"
 						href={staticLinks.firefox}
+						disabled={true}
 					></Buttons>
 				</div>
 			</div>
