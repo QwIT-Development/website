@@ -1,3 +1,4 @@
+import SvelteMarkdown from '@humanspeak/svelte-markdown';
 let latestAppVersion;
 let latestExtVersion;
 
@@ -10,6 +11,17 @@ export function checkCache() {
 
 	if (appVersionCache) appVerElement.innerText = appVersionCache;
 	if (extVersionCache) extVerElement.innerText = extVersionCache;
+}
+
+export async function privacyPolicyClient(): Promise<string> {
+	const browserLocale = navigator.language;
+	const isHungarian = browserLocale?.toLowerCase().startsWith('hu');
+	const fileLink = isHungarian ? 'README.md' : 'README_en.md';
+
+	const resp = await fetch(`https://raw.githubusercontent.com/QwIT-Development/privacy-policy/refs/heads/master/${fileLink}`);
+	const policy = await resp.text();
+
+	return policy;
 }
 
 export async function downloadsClient() {
