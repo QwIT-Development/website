@@ -5,7 +5,10 @@
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
 	const appDownloadLinks = {
-		testflight: 'https://testflight.apple.com/join/NdzF8b84'
+		testflight: 'https://testflight.apple.com/join/NdzF8b84',
+		fdroid: 'https://repo.firka.app/fdroid/repo?fingerprint=C5656F50D80497CE659DB2E88F436114DE617A09B66980D2226DF9D042AE2925',
+		arm64: 'https://repo.firka.app/fdroid/repo/app.firka.naplo_arm64-v8a.apk',
+		armeabi: 'https://repo.firka.app/fdroid/repo/app.firka.naplo_armeabi-v7a.apk'
 	}
 
 	const githubLinks = {
@@ -42,7 +45,7 @@
 				<p class="font_header_14px">Android</p>
 				<div class="section-buttons">
 					<Buttons label="F-Droid" type="small_primary"
-									 href="https://repo.firka.app/fdroid/repo?fingerprint=C5656F50D80497CE659DB2E88F436114DE617A09B66980D2226DF9D042AE2925"
+									 href={appDownloadLinks.fdroid}
 									 icon="/android.svg" disabled={true} ></Buttons>
 					<Buttons
 						label="Google Play"
@@ -57,14 +60,14 @@
 						label="arm64.apk"
 						type="small_secondary"
 						icon="/apk.svg"
-						href="https://repo.firka.app/fdroid/repo/app.firka.naplo_arm64-v8a.apk"
+						href={appDownloadLinks.arm64}
 						disabled={true} ></Buttons>
 					<Buttons
 						id="armeabi"
 						label="armeabi.apk"
 						type="small_secondary"
 						icon="/apk.svg"
-						href="https://repo.firka.app/fdroid/repo/app.firka.naplo_armeabi-v7a.apk"
+						href={appDownloadLinks.armeabi}
 						disabled={true} ></Buttons>
 				</div>
 			</div>
@@ -75,7 +78,8 @@
 						label="TestFlight"
 						type="small_primary"
 						icon="/testflight.svg"
-						href={appDownloadLinks.testflight} ></Buttons>
+						href={appDownloadLinks.testflight} 
+						disabled={true} ></Buttons>
 				</div>
 			</div>
 			<div class="card-section">
