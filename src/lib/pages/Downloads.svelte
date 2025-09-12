@@ -4,6 +4,10 @@
 	import { onMount } from 'svelte';
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
+	const appDownloadLinks = {
+		testflight: 'https://testflight.apple.com/join/NdzF8b84'
+	}
+
 	const githubLinks = {
 		app: 'https://github.com/QwIT-Development/firka',
 		extension: 'https://github.com/QwIT-Development/firka-extension'
@@ -67,8 +71,11 @@
 			<div class="card-section">
 				<p class="font_header_14px">iOS</p>
 				<div class="section-buttons">
-					<Buttons label="TestFlight" type="small_primary" icon="/testflight.svg" disabled={true}
-					></Buttons>
+					<Buttons
+						label="TestFlight"
+						type="small_primary"
+						icon="/testflight.svg"
+						href={appDownloadLinks.testflight} ></Buttons>
 				</div>
 			</div>
 			<div class="card-section">
