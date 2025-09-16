@@ -27,3 +27,4 @@ vite.config.ts.timestamp-*
 
 bun.lock
 package-lock.json
+pnpm-lock.yaml

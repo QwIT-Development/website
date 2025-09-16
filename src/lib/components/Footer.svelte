@@ -115,6 +115,7 @@
 	<div class="notice">
 		<p>Website design made by <a href="https://yoursit.ee/xou">xou</a></p>
 		<p>Copyright © {year}, All Rights Reserved</p>
+		<p>Kapcsolat: <a href="mailto:support@firkanaplo.hu">support@firkanaplo.hu</a></p> <!-- Ez nem biztos de kell az applenek -->
 	</div>
 	<div class="links-ugly">
 		<a href="/privacy">Adatkezelés</a>
