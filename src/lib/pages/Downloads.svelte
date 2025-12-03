@@ -162,6 +162,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		width: 100%;
+        gap: 1rem;
 	}
 
 	.title h2 {
