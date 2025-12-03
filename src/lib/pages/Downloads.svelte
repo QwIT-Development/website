@@ -21,6 +21,11 @@
 		firefox: 'https://addons.mozilla.org/hu/firefox/addon/firxa/'
 	};
 
+	const legacyAppDownloadLinks = {
+		arm64: 'https://github.com/QwIT-Development/app-legacy/releases/download/v5.1.6fix/app-arm64-v8a-release.apk',
+		armeabi: 'https://github.com/QwIT-Development/app-legacy/releases/download/v5.1.6fix/app-armeabi-v7a-release.apk'
+	}
+
 	onMount(() => {
 		checkCache();
 		downloadsClient();
@@ -38,7 +43,15 @@
 	<div class="cards">
 		<div class="card tiny_shadow">
 			<div class="card-header">
-				<h2 class="font_header_h2">Alkalmazás</h2>
+				<div class="row-space-between">
+					<h2 class="font_header_h2">Alkalmazás</h2>
+					<div class="card-toggle" title="Régimódi vagyok!">
+						<label class="switch">
+							<input type="checkbox" id="legacy-toggle" checked/>
+							<span class="slider round"></span>
+						</label>
+					</div>
+				</div>
 				<p class="font_body_16px_regular" id="app-ver"></p>
 			</div>
 			<div class="card-section">
@@ -144,6 +157,13 @@
 		gap: 24px;
 	}
 
+	.row-space-between {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+	}
+
 	.title h2 {
 		color: var(--text_primary);
 	}
@@ -152,9 +172,66 @@
 		color: var(--text_secondary);
 	}
 
+	.switch {
+		position: relative;
+		display: inline-block;
+		width: 50px;
+		height: 24px;
+	}
+
+	.switch input {
+		opacity: 0;
+		width: 0;
+		height: 0;
+	}
+
+	.slider {
+		position: absolute;
+		cursor: pointer;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		outline: 2px solid #00000098;
+		transition: 0.4s;
+		border-radius: 34px;
+	}
+
+	.slider:before {
+		position: absolute;
+		content: "";
+		height: 24px;
+		width: 24px;
+		left: 0px;
+		bottom: 0px;
+		background-color: white;
+		-webkit-transition: .4s;
+		transition: .4s;
+	}
+
+	input:checked + .slider {
+		background-color: #51aa36;
+		outline: unset;
+	}
+
+	input:checked + .slider:before {
+		-webkit-transform: translateX(26px);
+		-ms-transform: translateX(26px);
+		transform: translateX(26px);
+	}
+	.slider.round {
+		border-radius: 34px;
+	}
+
+	.slider.round:before {
+		border-radius: 50%;
+	}
+
 	div.cards {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: stretch;
+		justify-content: center;
 		gap: 20px;
 		align-self: stretch;
 	}
@@ -169,6 +246,7 @@
 		border-radius: 16px;
 		background: var(--card_card);
 	}
+
 	.card-header h2 {
 		color: var(--text_primary);
 	}
