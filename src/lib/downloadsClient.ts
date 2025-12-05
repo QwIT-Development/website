@@ -5,12 +5,15 @@ let latestExtVersion;
 export function checkCache() {
 	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
 	const appVerElement = document.getElementById('app-ver') as HTMLElement;
+	const legacyVerElement = document.getElementById('legacy-ver') as HTMLElement;
 
 	const appVersionCache = localStorage.getItem('latestAppVersion');
 	const extVersionCache = localStorage.getItem('latestExtVersion');
+	const legacyVersionCache = localStorage.getItem('latestLegacyVersion');
 
 	if (appVersionCache) appVerElement.innerText = appVersionCache;
 	if (extVersionCache) extVerElement.innerText = extVersionCache;
+	if (legacyVersionCache) legacyVerElement.innerText = legacyVersionCache;
 }
 
 export async function privacyPolicyClient(): Promise<string> {
@@ -27,6 +30,7 @@ export async function privacyPolicyClient(): Promise<string> {
 export async function downloadsClient() {
 	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
 	const appVerElement = document.getElementById('app-ver') as HTMLElement;
+	const legacyVerElement = document.getElementById('legacy-ver') as HTMLElement;
 
 	let resp = await fetch('/api/getappversion', {
 		method: 'GET'
@@ -40,9 +44,11 @@ export async function downloadsClient() {
 
 	latestAppVersion = app.version;
 	latestExtVersion = ext.version;
+	const latestLegacyVersion = 'v5.1.6 fix';
 
 	localStorage.setItem('latestAppVersion', latestAppVersion);
 	localStorage.setItem('latestExtVersion', latestExtVersion);
+	localStorage.setItem('latestLegacyVersion', latestLegacyVersion);
 
 	if (extVerElement) {
 		extVerElement.innerText = latestExtVersion;
@@ -50,5 +56,9 @@ export async function downloadsClient() {
 
 	if (appVerElement) {
 		appVerElement.innerText = latestAppVersion;
+	}
+
+	if (legacyVerElement) {
+		legacyVerElement.innerText = latestLegacyVersion;
 	}
 }
