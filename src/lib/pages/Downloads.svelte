@@ -34,6 +34,17 @@
 	$: selectedAppLinks = legacy ? legacyAppDownloadLinks : appDownloadLinks;
 	$: selectedGithubLink = legacy ? githubLinks.legacy : githubLinks.app;
 
+	const showModal = () => {
+		if(legacy) return;
+		const modal = document.querySelector('.modal') as HTMLDivElement;
+		modal.hidden = !modal.hidden;
+		if (!modal.hidden) {
+			document.body.classList.add('modal-open');
+		} else {
+			document.body.classList.remove('modal-open');
+		}
+	}
+
 	onMount(() => {
 		checkCache();
 		downloadsClient();
@@ -41,6 +52,16 @@
 </script>
 
 <div class="main" id="anchor-downloads">
+	<div class="modal" hidden>
+		<div class="row-space-between">
+			<h2 class="font_header_h2">Béta figyelmeztetés</h2>
+			<button class="modal-close" on:click={showModal} title="Bezárás">✕</button>
+		</div>
+		<p class="font_body_16px_regular">
+			Jelenleg a legacy alkalmazást ajánljuk, ami régebbi,
+			de stabilabban működik, és több funkció van benne.
+		</p>
+	</div>
 	<div class="title">
 		<h2 class="font_web_h2">Töltsd le a Firka Naplót</h2>
 		<p class="font_body_16px_regular">
@@ -55,7 +76,7 @@
 					<h2 class="font_header_h2">Alkalmazás</h2>
 					<div class="card-toggle" title="Régimódi vagyok!">
 						<label class="switch">
-							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} />
+							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} on:change={showModal} />
 							<span class="slider round"></span>
 						</label>
 					</div>
@@ -179,6 +200,66 @@
 
 	.title p {
 		color: var(--text_secondary);
+	}
+
+	.modal {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: var(--card_card);
+		padding: 24px;
+		border-radius: 16px;
+		width: 30%;
+		z-index: 1001;
+		box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
+	}
+
+	.modal h2 {
+		color: var(--text_primary);
+		margin: 0;
+	}
+
+	.modal p {
+		color: var(--text_secondary);
+		margin-top: 16px;
+		width: 80%;
+	}
+
+	.modal button {
+		position: relative;
+		background: transparent;
+		border: none;
+		color: var(--text_primary);
+		font-size: 20px;
+		cursor: pointer;
+		transition: color 0.3s;
+	}
+
+	.modal button:hover {
+		color: var(--accent_readable);
+	}
+
+	.modal button::after {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		background: var(--accent_readable);
+		pointer-events: none;
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0);
+		transform-origin: center center;
+		will-change: transform, opacity;
+		transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+	}
+
+	.modal button:hover::after {
+		opacity: 0.2;
+		transform: translate(-50%, -50%) scale(1);
 	}
 
 	.switch {

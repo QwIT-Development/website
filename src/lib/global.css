@@ -193,3 +193,12 @@ h2 {
     margin: 0;
     padding: 0;
 }
+
+/* Dim the entire site when a modal is open */
+body.modal-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+}
