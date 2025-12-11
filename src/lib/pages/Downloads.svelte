@@ -282,8 +282,8 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		outline: 2px solid #00000098;
-		transition: 0.4s;
+		background: var(--button_secondaryfill);
+		transition: 0.2s;
 		border-radius: 34px;
 	}
 
