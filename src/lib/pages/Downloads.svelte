@@ -4,6 +4,8 @@
 	import { onMount } from 'svelte';
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
+	let legacy = true;
+
 	const appDownloadLinks = {
 		testflight: 'https://testflight.apple.com/join/NdzF8b84',
 		fdroid: 'https://repo.firka.app/fdroid/repo?fingerprint=C5656F50D80497CE659DB2E88F436114DE617A09B66980D2226DF9D042AE2925',
@@ -11,9 +13,17 @@
 		armeabi: 'https://repo.firka.app/fdroid/repo/app.firka.naplo_armeabi-v7a.apk'
 	}
 
+	const legacyAppDownloadLinks = {
+		arm64: 'https://github.com/QwIT-Development/app-legacy/releases/download/v5.1.6fix/app-arm64-v8a-release.apk',
+		armeabi: 'https://github.com/QwIT-Development/app-legacy/releases/download/v5.1.6fix/app-armeabi-v7a-release.apk',
+		testflight: '#',
+		fdroid: '#'
+	};
+
 	const githubLinks = {
 		app: 'https://github.com/QwIT-Development/firka',
-		extension: 'https://github.com/QwIT-Development/firka-extension'
+		extension: 'https://github.com/QwIT-Development/firka-extension',
+		legacy: 'https://github.com/QwIT-Development/app-legacy'
 	};
 
 	const staticLinks = {
@@ -21,10 +31,8 @@
 		firefox: 'https://addons.mozilla.org/hu/firefox/addon/firxa/'
 	};
 
-	const legacyAppDownloadLinks = {
-		arm64: 'https://github.com/QwIT-Development/app-legacy/releases/download/v5.1.6fix/app-arm64-v8a-release.apk',
-		armeabi: 'https://github.com/QwIT-Development/app-legacy/releases/download/v5.1.6fix/app-armeabi-v7a-release.apk'
-	}
+	$: selectedAppLinks = legacy ? legacyAppDownloadLinks : appDownloadLinks;
+	$: selectedGithubLink = legacy ? githubLinks.legacy : githubLinks.app;
 
 	onMount(() => {
 		checkCache();
@@ -47,7 +55,7 @@
 					<h2 class="font_header_h2">Alkalmazás</h2>
 					<div class="card-toggle" title="Régimódi vagyok!">
 						<label class="switch">
-							<input type="checkbox" id="legacy-toggle" checked/>
+							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} />
 							<span class="slider round"></span>
 						</label>
 					</div>
@@ -58,8 +66,8 @@
 				<p class="font_header_14px">Android</p>
 				<div class="section-buttons">
 					<Buttons label="F-Droid" type="small_primary"
-									 href={appDownloadLinks.fdroid}
-									 icon="/android.svg" disabled={true} ></Buttons>
+							 href={selectedAppLinks.fdroid}
+							 icon="/android.svg" disabled={true} ></Buttons>
 					<Buttons
 						label="Google Play"
 						type="small_secondary"
@@ -73,15 +81,15 @@
 						label="arm64.apk"
 						type="small_secondary"
 						icon="/apk.svg"
-						href={appDownloadLinks.arm64}
-						disabled={true} ></Buttons>
+						href={selectedAppLinks.arm64}
+						disabled={!legacy} ></Buttons>
 					<Buttons
 						id="armeabi"
 						label="armeabi.apk"
 						type="small_secondary"
 						icon="/apk.svg"
-						href={appDownloadLinks.armeabi}
-						disabled={true} ></Buttons>
+						href={selectedAppLinks.armeabi}
+						disabled={!legacy} ></Buttons>
 				</div>
 			</div>
 			<div class="card-section">
@@ -91,14 +99,14 @@
 						label="TestFlight"
 						type="small_primary"
 						icon="/testflight.svg"
-						href={appDownloadLinks.testflight} 
+						href={selectedAppLinks.testflight} 
 						disabled={true} ></Buttons>
 				</div>
 			</div>
 			<div class="card-section">
 				<p class="font_header_14px">Forráskód</p>
 				<div class="section-buttons">
-					<Buttons label="GitHub" href={githubLinks.app} icon="ri:github-fill"></Buttons>
+					<Buttons label="GitHub" href={selectedGithubLink} icon="ri:github-fill"></Buttons>
 				</div>
 			</div>
 		</div>
@@ -162,7 +170,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		width: 100%;
-        gap: 1rem;
+		align-items: center;
 	}
 
 	.title h2 {
@@ -211,7 +219,7 @@
 	}
 
 	input:checked + .slider {
-		background-color: #51aa36;
+		background-color: var(--accent_readable);
 		outline: unset;
 	}
 
@@ -257,6 +265,7 @@
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 6px;
+		align-self: stretch;
 	}
 
 	.card-header p {

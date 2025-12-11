@@ -1,15 +1,23 @@
 import SvelteMarkdown from '@humanspeak/svelte-markdown';
 let latestAppVersion;
 let latestExtVersion;
+let latestLegacyVersion;
 
 export function checkCache() {
 	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
 	const appVerElement = document.getElementById('app-ver') as HTMLElement;
+	const toggleSwitch = document.getElementById('legacy-toggle') as HTMLInputElement;
+	toggleSwitch.addEventListener('change', downloadsClient);
 
 	const appVersionCache = localStorage.getItem('latestAppVersion');
 	const extVersionCache = localStorage.getItem('latestExtVersion');
+	const legacyVersionCache = localStorage.getItem('latestLegacyVersion');
 
-	if (appVersionCache) appVerElement.innerText = appVersionCache;
+	if (toggleSwitch.checked) {
+		if (legacyVersionCache) appVerElement.innerText = legacyVersionCache;
+	} else {
+		if (appVersionCache) appVerElement.innerText = appVersionCache;
+	}
 	if (extVersionCache) extVerElement.innerText = extVersionCache;
 }
 
@@ -27,11 +35,17 @@ export async function privacyPolicyClient(): Promise<string> {
 export async function downloadsClient() {
 	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
 	const appVerElement = document.getElementById('app-ver') as HTMLElement;
+	const legacySwitch = document.getElementById('legacy-toggle') as HTMLInputElement;
 
 	let resp = await fetch('/api/getappversion', {
 		method: 'GET'
 	});
 	const app = await resp.json();
+
+	resp = await fetch('/api/getlegacyversion', {
+		method: 'GET'
+	});
+	const legacy = await resp.json();
 
 	resp = await fetch('/api/getextversion', {
 		method: 'GET'
@@ -40,15 +54,21 @@ export async function downloadsClient() {
 
 	latestAppVersion = app.version;
 	latestExtVersion = ext.version;
+	latestLegacyVersion = legacy.version;
 
 	localStorage.setItem('latestAppVersion', latestAppVersion);
 	localStorage.setItem('latestExtVersion', latestExtVersion);
+	localStorage.setItem('latestLegacyVersion', latestLegacyVersion);
 
 	if (extVerElement) {
 		extVerElement.innerText = latestExtVersion;
 	}
 
 	if (appVerElement) {
-		appVerElement.innerText = latestAppVersion;
+		if (legacySwitch.checked) {
+			appVerElement.innerText = latestLegacyVersion;
+		} else {
+			appVerElement.innerText = latestAppVersion;
+		}
 	}
 }
