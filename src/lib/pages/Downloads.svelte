@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
+	let showTooltip = false;
 	let legacy = true;
 
 	const appDownloadLinks = {
@@ -45,6 +46,14 @@
 		}
 	}
 
+	$: {
+		if (!legacy) {
+			document.documentElement.classList.add('bnw-mode');
+		} else {
+			document.documentElement.classList.remove('bnw-mode');
+		}
+	}
+
 	onMount(() => {
 		checkCache();
 		downloadsClient();
@@ -74,10 +83,17 @@
 			<div class="card-header">
 				<div class="row-space-between">
 					<h2 class="font_header_h2">Alkalmazás</h2>
-					<div class="card-toggle" title="Régimódi vagyok!">
-						<label class="switch">
+					<div class="card-toggle">
+						<label class="checkbox-label font_body_16px_regular" 
+							on:mouseenter={() => showTooltip = true}
+							on:mouseleave={() => showTooltip = false}>
+							Régimódi vagyok!
 							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} on:change={showModal} />
-							<span class="slider round"></span>
+							{#if showTooltip}
+								<div class="tooltip font_body_16px_regular">
+									Jelenleg a legacy alkalmazást ajánljuk, ami régebbi, de stabilabban működik, és több funkció van benne.
+								</div>
+							{/if}
 						</label>
 					</div>
 				</div>
@@ -262,59 +278,64 @@
 		transform: translate(-50%, -50%) scale(1);
 	}
 
-	.switch {
-		position: relative;
-		display: inline-block;
-		width: 50px;
-		height: 24px;
-	}
-
-	.switch input {
-		opacity: 0;
-		width: 0;
-		height: 0;
-	}
-
-	.slider {
-		position: absolute;
+	.checkbox-label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
 		cursor: pointer;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: var(--button_secondaryfill);
-		transition: 0.2s;
-		border-radius: 34px;
+		color: var(--text_secondary);
+		font-size: 14px;
+		font-weight: 600;
+		position: relative;
+		padding: 4px 8px;
+		border-radius: 8px;
 	}
 
-	.slider:before {
+	.checkbox-label input[type="checkbox"] {
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+		appearance: none;
+		background-color: var(--button_secondaryfill);
+		border: 1px solid var(--text_teritary);
+		border-radius: 4px;
+	}
+
+	input[type="checkbox"]:checked {
+		appearance: revert;
+		accent-color: var(--accent_readable);
+	}
+
+	.checkbox-label:hover {
+		color: var(--text_primary);
+		background-color: var(--button_secondaryfill);
+	}
+
+	.tooltip {
 		position: absolute;
-		content: "";
-		height: 24px;
-		width: 24px;
-		left: 0px;
-		bottom: 0px;
-		background-color: white;
-		-webkit-transition: .4s;
-		transition: .4s;
+		bottom: calc(100% + 8px);
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--text_primary);
+		color: var(--card_card);
+		padding: 8px 12px;
+		border-radius: 8px;
+		font-size: 12px;
+		font-weight: 500;
+		white-space: nowrap;
+		z-index: 1002;
+		animation: tooltipFadeIn 0.3s ease-in-out;
 	}
 
-	input:checked + .slider {
-		background-color: var(--accent_readable);
-		outline: unset;
-	}
-
-	input:checked + .slider:before {
-		-webkit-transform: translateX(26px);
-		-ms-transform: translateX(26px);
-		transform: translateX(26px);
-	}
-	.slider.round {
-		border-radius: 34px;
-	}
-
-	.slider.round:before {
-		border-radius: 50%;
+	@keyframes tooltipFadeIn {
+		from {
+			opacity: 0;
+			transform: translateX(-50%) translateY(4px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(-50%) translateY(0);
+		}
 	}
 
 	div.cards {
@@ -376,6 +397,10 @@
 
 
 	@media (max-width: 1540px) {
+		.modal {
+			width: 80%;
+		}
+
 		div.main {
 			display: flex;
 			width: 100%;

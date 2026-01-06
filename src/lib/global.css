@@ -47,6 +47,30 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+:root.bnw-mode {
+    --background: #363833;
+    --background-0: #9da58c00;
+    --success: var(--grades_4);
+    --shadow-blur: 2px;
+
+    --text_primary: #afbd8d;
+    --text_secondary: #88926dcc;
+    --text_teritary: #7f866d80;
+    --text_primary_button: #030302; /* quick fix for wrong button color */
+
+    --card_card: #30312c;
+    --card_translucent: #565c4780;
+
+    --button_secondaryfill: #3c3f3a;
+    --button_primaryfill: #677758; /* another fix */
+
+    --accent_accent: #818675;
+    --accent_readable: #5c6448;
+    --accent_secondary: #525a3d;
+    --accent_shadowcolor: #00000033;
+    --accent_15: #21241926;
+}
+
 html.dark-mode {
     --background: #0D1202;
     --background-0: #0E130200;
@@ -194,11 +218,22 @@ h2 {
     padding: 0;
 }
 
-/* Dim the entire site when a modal is open */
 body.modal-open::before {
     content: '';
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.45);
     z-index: 1000;
+}
+
+html.bnw-mode::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url('/old-overlay.jpg');
+    background-size: cover;
+    background-blend-mode: multiply;
+    opacity: 0.1;
+    z-index: 1000;
+    pointer-events: none;
 }
