@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
+	let showTooltip = false;
 	let legacy = true;
 
 	const appDownloadLinks = {
@@ -34,6 +35,25 @@
 	$: selectedAppLinks = legacy ? legacyAppDownloadLinks : appDownloadLinks;
 	$: selectedGithubLink = legacy ? githubLinks.legacy : githubLinks.app;
 
+	const showModal = () => {
+		if(legacy) return;
+		const modal = document.querySelector('.modal') as HTMLDivElement;
+		modal.hidden = !modal.hidden;
+		if (!modal.hidden) {
+			document.body.classList.add('modal-open');
+		} else {
+			document.body.classList.remove('modal-open');
+		}
+	}
+
+	$: {
+		if (!legacy) {
+			document.documentElement.classList.add('bnw-mode');
+		} else {
+			document.documentElement.classList.remove('bnw-mode');
+		}
+	}
+
 	onMount(() => {
 		checkCache();
 		downloadsClient();
@@ -41,6 +61,16 @@
 </script>
 
 <div class="main" id="anchor-downloads">
+	<div class="modal" hidden>
+		<div class="row-space-between">
+			<h2 class="font_header_h2">Béta figyelmeztetés</h2>
+			<button class="modal-close" on:click={showModal} title="Bezárás">✕</button>
+		</div>
+		<p class="font_body_16px_regular">
+			Jelenleg a legacy alkalmazást ajánljuk, ami régebbi,
+			de stabilabban működik, és több funkció van benne.
+		</p>
+	</div>
 	<div class="title">
 		<h2 class="font_web_h2">Töltsd le a Firka Naplót</h2>
 		<p class="font_body_16px_regular">
@@ -53,10 +83,17 @@
 			<div class="card-header">
 				<div class="row-space-between">
 					<h2 class="font_header_h2">Alkalmazás</h2>
-					<div class="card-toggle" title="Régimódi vagyok!">
-						<label class="switch">
-							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} />
-							<span class="slider round"></span>
+					<div class="card-toggle">
+						<label class="checkbox-label font_body_16px_regular" 
+							on:mouseenter={() => showTooltip = true}
+							on:mouseleave={() => showTooltip = false}>
+							Régimódi vagyok!
+							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} on:change={showModal} />
+							{#if showTooltip}
+								<div class="tooltip font_body_16px_regular">
+									Jelenleg a legacy alkalmazást ajánljuk, ami régebbi, de stabilabban működik, és több funkció van benne.
+								</div>
+							{/if}
 						</label>
 					</div>
 				</div>
@@ -181,59 +218,124 @@
 		color: var(--text_secondary);
 	}
 
-	.switch {
+	.modal {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		background: var(--card_card);
+		padding: 24px;
+		border-radius: 16px;
+		width: 30%;
+		z-index: 1001;
+		box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.3);
+	}
+
+	.modal h2 {
+		color: var(--text_primary);
+		margin: 0;
+	}
+
+	.modal p {
+		color: var(--text_secondary);
+		margin-top: 16px;
+		width: 80%;
+	}
+
+	.modal button {
 		position: relative;
-		display: inline-block;
-		width: 50px;
-		height: 24px;
-	}
-
-	.switch input {
-		opacity: 0;
-		width: 0;
-		height: 0;
-	}
-
-	.slider {
-		position: absolute;
+		background: transparent;
+		border: none;
+		color: var(--text_primary);
+		font-size: 20px;
 		cursor: pointer;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		outline: 2px solid #00000098;
-		transition: 0.4s;
-		border-radius: 34px;
+		transition: color 0.3s;
 	}
 
-	.slider:before {
+	.modal button:hover {
+		color: var(--accent_readable);
+	}
+
+	.modal button::after {
+		content: '';
 		position: absolute;
-		content: "";
-		height: 24px;
-		width: 24px;
-		left: 0px;
-		bottom: 0px;
-		background-color: white;
-		-webkit-transition: .4s;
-		transition: .4s;
-	}
-
-	input:checked + .slider {
-		background-color: var(--accent_readable);
-		outline: unset;
-	}
-
-	input:checked + .slider:before {
-		-webkit-transform: translateX(26px);
-		-ms-transform: translateX(26px);
-		transform: translateX(26px);
-	}
-	.slider.round {
-		border-radius: 34px;
-	}
-
-	.slider.round:before {
+		top: 50%;
+		left: 50%;
+		width: 36px;
+		height: 36px;
 		border-radius: 50%;
+		background: var(--accent_readable);
+		pointer-events: none;
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0);
+		transform-origin: center center;
+		will-change: transform, opacity;
+		transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+	}
+
+	.modal button:hover::after {
+		opacity: 0.2;
+		transform: translate(-50%, -50%) scale(1);
+	}
+
+	.checkbox-label {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		cursor: pointer;
+		color: var(--text_secondary);
+		font-size: 14px;
+		font-weight: 600;
+		position: relative;
+		padding: 4px 8px;
+		border-radius: 8px;
+	}
+
+	.checkbox-label input[type="checkbox"] {
+		width: 20px;
+		height: 20px;
+		cursor: pointer;
+		appearance: none;
+		background-color: var(--button_secondaryfill);
+		border: 1px solid var(--text_teritary);
+		border-radius: 4px;
+	}
+
+	input[type="checkbox"]:checked {
+		appearance: revert;
+		accent-color: var(--accent_readable);
+	}
+
+	.checkbox-label:hover {
+		color: var(--text_primary);
+		background-color: var(--button_secondaryfill);
+	}
+
+	.tooltip {
+		position: absolute;
+		bottom: calc(100% + 8px);
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--text_primary);
+		color: var(--card_card);
+		padding: 8px 12px;
+		border-radius: 8px;
+		font-size: 12px;
+		font-weight: 500;
+		white-space: nowrap;
+		z-index: 1002;
+		animation: tooltipFadeIn 0.3s ease-in-out;
+	}
+
+	@keyframes tooltipFadeIn {
+		from {
+			opacity: 0;
+			transform: translateX(-50%) translateY(4px);
+		}
+		to {
+			opacity: 1;
+			transform: translateX(-50%) translateY(0);
+		}
 	}
 
 	div.cards {
@@ -295,6 +397,10 @@
 
 
 	@media (max-width: 1540px) {
+		.modal {
+			width: 80%;
+		}
+
 		div.main {
 			display: flex;
 			width: 100%;
