@@ -45,16 +45,13 @@
 	div.card {
 		display: flex;
 		padding: 20px;
+        width: 100%;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 20px;
 		border-radius: 16px;
 		background: var(--card_card);
 	}
-
-    .card.empty {
-        flex-grow: 1;
-    }
     
 	.card-header h2 {
 		color: var(--text_primary);
