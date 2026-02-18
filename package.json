@@ -30,5 +30,12 @@
 	"dependencies": {
 		"@humanspeak/svelte-markdown": "^0.8.11",
 		"remixicon": "^4.6.0"
+	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"sharp",
+			"workerd"
+		]
 	}
 }
