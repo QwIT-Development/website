@@ -28,7 +28,7 @@
 </div>
 <div class="links">
 	{#each navLinks as link}
-		<Buttons label={link.name} type={link.style} href={link.url}></Buttons>
+		<Buttons label={link.name} type={link.style} href={link.url} icon={link.icon}></Buttons>
 	{/each}
 </div>
 </nav>
