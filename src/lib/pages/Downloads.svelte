@@ -2,6 +2,7 @@
 	import '$lib/global.css';
 	import Buttons from '$lib/components/Buttons.svelte';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
 	let showTooltip = false;
@@ -47,23 +48,18 @@
 	}
 
 	$: {
-		if (!legacy) {
-			document.documentElement.classList.add('bnw-mode');
-		} else {
-			document.documentElement.classList.remove('bnw-mode');
+		if (browser) {
+			if (!legacy) {
+				document.documentElement.classList.add('bnw-mode');
+			} else {
+				document.documentElement.classList.remove('bnw-mode');
+			}
 		}
 	}
 
 	onMount(() => {
 		checkCache();
 		downloadsClient();
-	$: {
-		if (!legacy) {
-			document.documentElement.classList.add('bnw-mode');
-		} else {
-			document.documentElement.classList.remove('bnw-mode');
-		}
-	}
 	});
 </script>
 
