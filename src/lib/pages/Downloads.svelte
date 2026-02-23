@@ -6,7 +6,7 @@
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
 	let showTooltip = false;
-	let legacy = true;
+	let legacy = false;
 
 	const appDownloadLinks = {
 		testflight: 'https://testflight.apple.com/join/NdzF8b84',
@@ -85,12 +85,16 @@
 		<div class="card tiny_shadow">
 			<div class="card-header">
 				<div class="row-space-between">
+					{#if legacy}
+						<h2 class="font_header_h2">Legacy</h2>
+					{:else}
 					<h2 class="font_header_h2">Alkalmazás</h2>
+					{/if}
 					<div class="card-toggle">
 						<label class="checkbox-label font_body_16px_regular" 
 							on:mouseenter={() => showTooltip = true}
 							on:mouseleave={() => showTooltip = false}>
-							Régimódi vagyok!
+							Bátor vagyok!
 							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} on:change={showModal} />
 							{#if showTooltip}
 								<div class="tooltip font_body_16px_regular">
