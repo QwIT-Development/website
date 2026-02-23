@@ -57,6 +57,13 @@
 	onMount(() => {
 		checkCache();
 		downloadsClient();
+	$: {
+		if (!legacy) {
+			document.documentElement.classList.add('bnw-mode');
+		} else {
+			document.documentElement.classList.remove('bnw-mode');
+		}
+	}
 	});
 </script>
 
