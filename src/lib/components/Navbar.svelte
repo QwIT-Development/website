@@ -63,6 +63,7 @@
 		top: 48px;
 		z-index: 1000;
 		position: fixed;
+		flex-wrap: wrap;
 		height: 40px;
 	}
 
