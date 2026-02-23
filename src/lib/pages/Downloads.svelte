@@ -84,7 +84,7 @@
 					{#if legacy}
 						<h2 class="font_header_h2">Legacy</h2>
 					{:else}
-					<h2 class="font_header_h2">Alkalmazás</h2>
+						<h2 class="font_header_h2">Alkalmazás</h2>
 					{/if}
 					<div class="card-toggle">
 						<label class="checkbox-label font_body_16px_regular" 
@@ -292,6 +292,7 @@
 		position: relative;
 		padding: 4px 8px;
 		border-radius: 8px;
+		text-align: end;
 	}
 
 	.checkbox-label input[type="checkbox"] {
@@ -325,7 +326,9 @@
 		border-radius: 8px;
 		font-size: 12px;
 		font-weight: 500;
-		white-space: nowrap;
+		overflow-wrap: break-word;
+		text-align: center;
+		min-width: 200px;
 		z-index: 1002;
 		animation: tooltipFadeIn 0.3s ease-in-out;
 	}
