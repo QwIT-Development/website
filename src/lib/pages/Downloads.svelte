@@ -49,11 +49,7 @@
 
 	$: {
 		if (browser) {
-			if (!legacy) {
-				document.documentElement.classList.add('bnw-mode');
-			} else {
-				document.documentElement.classList.remove('bnw-mode');
-			}
+			document.documentElement.classList.toggle('bnw-mode', legacy);
 		}
 	}
 
