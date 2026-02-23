@@ -210,7 +210,7 @@
 		gap: 32px;
 	}
 
-	div.content {
+	.content {
 		display: flex;
 		align-items: stretch;
 		gap: 20px;
@@ -255,6 +255,7 @@
 			-webkit-overflow-scrolling: touch;
 			scrollbar-width: none;
 			width: 336px;
+			align-self: center;
 		}
 
 		.content::-webkit-scrollbar {

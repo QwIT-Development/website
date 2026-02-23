@@ -7,7 +7,10 @@ export function checkCache() {
 	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
 	const appVerElement = document.getElementById('app-ver') as HTMLElement;
 	const toggleSwitch = document.getElementById('legacy-toggle') as HTMLInputElement;
-	toggleSwitch.addEventListener('change', downloadsClient);
+	toggleSwitch.addEventListener('change', () => {
+		downloadsClient();
+		checkCache();
+	});
 
 	const appVersionCache = localStorage.getItem('latestAppVersion');
 	const extVersionCache = localStorage.getItem('latestExtVersion');

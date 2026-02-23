@@ -31,15 +31,21 @@
 </main>
 
 <style>
+    main {
+        gap: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+
     .title {
         color: var(--text_primary);
-        margin-bottom: 16px;
     }
 
     .cards {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
+        width: 100%;
     }
 
 	div.card {
@@ -67,4 +73,18 @@
 	.card-header p {
 		color: var(--text_secondary);
 	}
+
+	@media (max-width: 1540px) {
+        main {
+            align-items: center;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .cards {
+            width: 90%;
+        }
+    }
 </style>

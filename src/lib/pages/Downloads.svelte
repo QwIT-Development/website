@@ -6,7 +6,7 @@
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
 	let showTooltip = false;
-	let legacy = true;
+	let legacy = false;
 
 	const appDownloadLinks = {
 		testflight: 'https://testflight.apple.com/join/NdzF8b84',
@@ -49,11 +49,7 @@
 
 	$: {
 		if (browser) {
-			if (!legacy) {
-				document.documentElement.classList.add('bnw-mode');
-			} else {
-				document.documentElement.classList.remove('bnw-mode');
-			}
+			document.documentElement.classList.toggle('bnw-mode', legacy);
 		}
 	}
 
@@ -85,12 +81,16 @@
 		<div class="card tiny_shadow">
 			<div class="card-header">
 				<div class="row-space-between">
-					<h2 class="font_header_h2">Alkalmazás</h2>
+					{#if legacy}
+						<h2 class="font_header_h2">Legacy</h2>
+					{:else}
+						<h2 class="font_header_h2">Alkalmazás</h2>
+					{/if}
 					<div class="card-toggle">
 						<label class="checkbox-label font_body_16px_regular" 
 							on:mouseenter={() => showTooltip = true}
 							on:mouseleave={() => showTooltip = false}>
-							Régimódi vagyok!
+							Bátor vagyok!
 							<input type="checkbox" id="legacy-toggle" bind:checked={legacy} on:change={showModal} />
 							{#if showTooltip}
 								<div class="tooltip font_body_16px_regular">
@@ -292,6 +292,7 @@
 		position: relative;
 		padding: 4px 8px;
 		border-radius: 8px;
+		text-align: end;
 	}
 
 	.checkbox-label input[type="checkbox"] {
@@ -325,7 +326,9 @@
 		border-radius: 8px;
 		font-size: 12px;
 		font-weight: 500;
-		white-space: nowrap;
+		overflow-wrap: break-word;
+		text-align: center;
+		min-width: 200px;
 		z-index: 1002;
 		animation: tooltipFadeIn 0.3s ease-in-out;
 	}
