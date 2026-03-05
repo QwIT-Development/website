@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="cards-grid">
-		<a href="mailto:zypherift@proton.me" class="card tiny-shadow" aria-label="Email support">
+		<a href="mailto:support@firka.app" class="card tiny-shadow" aria-label="Email support">
 			<div class="card-icon">
 				<span class="ri-mail-line"></span>
 			</div>
