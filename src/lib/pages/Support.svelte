@@ -48,7 +48,7 @@
 			</div>
 			<div class="card-content">
 				<h2 class="font_header_18px">Email</h2>
-				<p class="font_body_14px_regular">zypherift@proton.me</p>
+				<p class="font_body_14px_regular">support@firka.app</p>
 				<span class="card-cta font_body_14px_regular">Üzenetet küldök →</span>
 			</div>
 		</a>
