@@ -118,6 +118,7 @@
 	</div>
 	<div class="links-ugly">
 		<a href="/privacy">Adatkezelés</a>
+		<a href="/support">Támogatás</a>
 	</div>
 </footer>
 <button
