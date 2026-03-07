@@ -13,18 +13,26 @@ export const GET: RequestHandler = async () => {
 		});
 	}
 
-	console.log(`ext: miss!`);
+	try {
+		console.log(`ext: miss!`);
 
-	const extensionURL = 'https://api.github.com/repos/QwIT-Development/firka-extension/releases';
-	const req = await fetch(extensionURL);
-	if (!req.ok) return new Response('Failed to fetch releases', { status: 502 });
+		const extensionURL = 'https://api.github.com/repos/QwIT-Development/firka-extension/releases';
+		const req = await fetch(extensionURL);
+		if (!req.ok) return new Response('Failed to fetch releases', { status: 502 });
 
-	const resp = (await req.json()) as Array<{ name?: string }>;
-	const extVersion = resp?.[0]?.name ?? 'unknown';
+		const resp = (await req.json()) as Array<{ name?: string }>;
+		const extVersion = resp?.[0]?.name ?? 'unknown';
 
-	extensionCache = { value: extVersion, expiresAt: now + CACHE_TTL_MS };
+		extensionCache = { value: extVersion, expiresAt: now + CACHE_TTL_MS };
 
-	return new Response(JSON.stringify({ version: extVersion }), {
-		headers: { 'Content-Type': 'application/json' }
-	});
+		return new Response(JSON.stringify({ version: extVersion }), {
+			headers: { 'Content-Type': 'application/json' }
+		});
+	} catch (err) {
+		console.error('getextversion error:', err);
+		return new Response(JSON.stringify({ version: 'unknown' }), {
+			status: 502,
+			headers: { 'Content-Type': 'application/json' }
+		});
+	}
 };

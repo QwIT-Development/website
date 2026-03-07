@@ -13,18 +13,26 @@ export const GET: RequestHandler = async () => {
 		});
 	}
 
-	console.log(`legacy: miss!`);
+	try {
+		console.log(`legacy: miss!`);
 
-	const legacyURL = 'https://api.github.com/repos/QwIT-Development/app-legacy/releases';
-	const req = await fetch(legacyURL);
-	if (!req.ok) return new Response('Failed to fetch releases', { status: 502 });
+		const legacyURL = 'https://api.github.com/repos/QwIT-Development/app-legacy/releases';
+		const req = await fetch(legacyURL);
+		if (!req.ok) return new Response('Failed to fetch releases', { status: 502 });
 
-	const resp = (await req.json()) as Array<{ name?: string }>;
-	const legacyVersion = resp?.[0]?.name ?? 'unknown';
+		const resp = (await req.json()) as Array<{ name?: string }>;
+		const legacyVersion = resp?.[0]?.name ?? 'unknown';
 
-	legacyCache = { value: legacyVersion, expiresAt: now + CACHE_TTL_MS };
+		legacyCache = { value: legacyVersion, expiresAt: now + CACHE_TTL_MS };
 
-	return new Response(JSON.stringify({ version: legacyVersion }), {
-		headers: { 'Content-Type': 'application/json' }
-	});
+		return new Response(JSON.stringify({ version: legacyVersion }), {
+			headers: { 'Content-Type': 'application/json' }
+		});
+	} catch (err) {
+		console.error('getlegacyversion error:', err);
+		return new Response(JSON.stringify({ version: 'unknown' }), {
+			status: 502,
+			headers: { 'Content-Type': 'application/json' }
+		});
+	}
 };
