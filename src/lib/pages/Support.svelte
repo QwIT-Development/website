@@ -54,7 +54,7 @@
 		</a>
 
 		<a
-			href="https://discord.gg/firka-1111649116020285532"
+			href="https://discord.gg/GGEUTJj5P7"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="card tiny-shadow"
