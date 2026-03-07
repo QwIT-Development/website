@@ -10,7 +10,14 @@ export const GET: RequestHandler = async () => {
 		const res = await fetch(jenkinsLastSuccessful);
 		if (!res.ok) return new Response('Failed to fetch build info', { status: 502 });
 
-		const { number } = (await res.json()) as { number: number };
+		const resText = await res.text();
+		if (!resText) {
+			return new Response(JSON.stringify({ version: 'unknown' }), {
+				status: 502,
+				headers: { 'Content-Type': 'application/json' }
+			});
+		}
+		const { number } = JSON.parse(resText) as { number: number };
 
 		if (appVersionCache.has(number)) {
 			return new Response(JSON.stringify({ version: appVersionCache.get(number) }), {
