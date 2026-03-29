@@ -99,7 +99,7 @@
 			<div class="card-section">
 				<p class="font_header_14px">Forráskód</p>
 				<div class="section-buttons">
-					<Buttons label="GitHub" href={githubLinks.extension} icon="ri:github-fill"></Buttons>
+					<Buttons label="GitHub" href="https://github.com/QwIT-Development/firka-extension" icon="ri:github-fill"></Buttons>
 				</div>
 			</div>
 		</div>

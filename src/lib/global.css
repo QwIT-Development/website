@@ -4,21 +4,21 @@
 
 :root {
     /* Colors */
-    --background: #FAFFF0;
-    --background-0: #fafff000;
+    --background: #F0FDFB;
+    --background-0: #F0FDFB00;
     --success: var(--grades_4);
     --shadow-blur: 2px;
 
-    --text_primary: #394C0A;
-    --text_secondary: #394C0ACC;
-    --text_teritary: #394C0A80;
-    --text_primary_button: #394C0A; /* quick fix for wrong button color */
+    --text_primary: #0A3A33;
+    --text_secondary: #0A3A33CC;
+    --text_teritary: #0A3A3380;
+    --text_primary_button: #0A3A33; /* quick fix for wrong button color */
 
-    --card_card: #F3FBDE;
-    --card_translucent: #F3FBDE80;
+    --card_card: #E0F7F4;
+    --card_translucent: #E0F7F480;
 
-    --button_secondaryfill: #FEFFFD;
-    --button_primaryfill: #FEFFFD; /* another fix */
+    --button_secondaryfill: #F5FFFE;
+    --button_primaryfill: #F5FFFE; /* another fix */
 
     --accent_accent: #00D2A9;
     --accent_readable: #009B7D;
@@ -72,19 +72,19 @@ body {
 }
 
 html.dark-mode {
-    --background: #0D1202;
-    --background-0: #0E130200;
+    --background: #021A16;
+    --background-0: #021A1600;
     --success: var(--grades_4);
     --shadow-blur: 0px;
 
-    --text_primary: #EAF7CC;
-    --text_secondary: #EAF7CCB3;
-    --text_teritary: #EAF7CC80;
+    --text_primary: #C8F5EF;
+    --text_secondary: #C8F5EFB3;
+    --text_teritary: #C8F5EF80;
 
-    --card_card: #141905;
-    --card_translucent: #14190580;
+    --card_card: #062420;
+    --card_translucent: #06242080;
 
-    --button_secondaryfill: #20290B;
+    --button_secondaryfill: #0B3530;
 
     --accent_accent: #00D2A9;
     --accent_secondary: #4DE8CC;
