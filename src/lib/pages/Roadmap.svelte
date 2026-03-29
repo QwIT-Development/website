@@ -15,20 +15,9 @@
 				{
 					title: 'ALAP',
 					items: [
-						'Bejelentkezési képernyő',
-						'Kezdőlapon tanórákról információ',
-						'Jegyek száma és aránya',
-						'Órarend',
-						'Órarend havi nézet',
-						'Órarend beállításai',
+						'Hamarosan'
 					]
 				},
-				{
-					title: "Extrák",
-					items: [
-						'App ikonok',
-					]
-				}
 			]
 		},
 		{
@@ -40,16 +29,7 @@
 				{
 					title: null,
 					items: [
-						'Kezdőlap',
-						'Órarendben dolgozatok, óra témája, stb.',
-						'"Tőbb" menüpont',
-						'Mulasztások',
-						'Beállítások',
-						'Navigációs sáv testreszabása',
-						'Személyreszabás',
-						'Balkezes mód',
-						'Témák',
-						'Jegyek mentése'
+						'Hamarosan'
 					]
 				}
 			]
@@ -63,10 +43,7 @@
 				{
 					title: null,
 					items: [
-						'Jegyekhez grafikon',
-						'Értesítések',
-						'Extrák',
-						'Naptár szinkronizálása'
+						'Hamarosan'
 					]
 				}
 			]

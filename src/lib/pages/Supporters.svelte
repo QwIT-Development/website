@@ -22,7 +22,7 @@
         <div class="card tiny_shadow empty">
             <div class="card-header">
                 <h2 class="font_web_h3">Ez a rész üres...</h2>
-                <p class="font_body_16px_regular">Szeretnél hozzájárulni a Firka fejlesztéséhez?</p>
+                <p class="font_body_16px_regular">Szeretnél hozzájárulni a Folio fejlesztéséhez?</p>
             </div>
             <Buttons label="Kapcsolatfelvétel" type="small_secondary"
                 href={discordInvite} icon="ri:discord-fill"></Buttons>

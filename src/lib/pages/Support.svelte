@@ -10,7 +10,7 @@
 		{
 			question: 'Hiányoznak vagy hibásak a jegyeim.',
 			answer:
-				'A Firka a KRÉTA rendszerből szinkronizálja az adatokat. Ha hiányos adatokat látsz, ellenőrizd a KRÉTA webes felületen is. Ha ott helyes, próbálj meg frissíteni az alkalmazásban (húzd le az oldalt).'
+				'A Folio a KRÉTA rendszerből szinkronizálja az adatokat. Ha hiányos adatokat látsz, ellenőrizd a KRÉTA webes felületen is. Ha ott helyes, próbálj meg frissíteni az alkalmazásban (húzd le az oldalt).'
 		},
 		{
 			question: 'Az alkalmazás összeomlik vagy hibát jelez.',
@@ -20,11 +20,11 @@
 		{
 			question: 'Hogyan lehet törölni a fiókomat?',
 			answer:
-				'A Firka nem tárol fiókadatokat a saját szerverein — közvetlenül a KRÉTA rendszeren keresztül működik. A Firka alkalmazás törlésével minden helyi adat eltávolításra kerül.'
+				'A Folio nem tárol fiókadatokat a saját szerverein — közvetlenül a KRÉTA rendszeren keresztül működik. A Folio alkalmazás törlésével minden helyi adat eltávolításra kerül.'
 		},
 		{
-			question: 'Melyik eszközökön érhető el a Firka?',
-			answer: 'A Firka jelenleg iOS és Android platformokon érhető el.'
+			question: 'Melyik eszközökön érhető el a Folio?',
+			answer: 'A Folio jelenleg csak Android platformon érhető el. iOS-en nem elérhető.'
 		}
 	];
 
@@ -42,13 +42,13 @@
 	</div>
 
 	<div class="cards-grid">
-		<a href="mailto:support@firka.app" class="card tiny-shadow" aria-label="Email support">
+		<a href="mailto:support@zan1456.dev" class="card tiny-shadow" aria-label="Email support">
 			<div class="card-icon">
 				<span class="ri-mail-line"></span>
 			</div>
 			<div class="card-content">
 				<h2 class="font_header_18px">Email</h2>
-				<p class="font_body_14px_regular">support@firka.app</p>
+				<p class="font_body_14px_regular">support@zan1456.dev</p>
 				<span class="card-cta font_body_14px_regular">Üzenetet küldök →</span>
 			</div>
 		</a>
@@ -71,7 +71,7 @@
 		</a>
 
 		<a
-			href="https://github.com/QwIT-Development"
+			href="https://github.com/Zan1456/folio/issues"
 			target="_blank"
 			rel="noopener noreferrer"
 			class="card tiny-shadow"

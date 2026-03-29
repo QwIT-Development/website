@@ -18,7 +18,7 @@
 		on:mouseleave={() => (brandingHover = false)}
 	>
 		<img src={brandingHover ? hoverLogo : normalLogo} alt="logo" />
-		<h1>Firka Napló</h1>
+		<h1>Folio</h1>
 	</a>
 </div>
 <div class="links">

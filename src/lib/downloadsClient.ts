@@ -23,7 +23,7 @@ export async function privacyPolicyClient(): Promise<string> {
 	return policy;
 }
 
-export async function downloadsClient() {
+export async function downloadsClient(): Promise<{ appVersion: string; extVersion: string }> {
 	const extVerElement = document.getElementById('ext-ver') as HTMLElement;
 	const appVerElement = document.getElementById('app-ver') as HTMLElement;
 
@@ -41,4 +41,6 @@ export async function downloadsClient() {
 
 	if (appVerElement) appVerElement.innerText = latestAppVersion;
 	if (extVerElement) extVerElement.innerText = latestExtVersion;
+
+	return { appVersion: latestAppVersion, extVersion: latestExtVersion };
 }

@@ -4,9 +4,11 @@
 	import { onMount } from 'svelte';
 	import { checkCache, downloadsClient } from '$lib/downloadsClient';
 
-	const appDownloadLinks = {
-		arm64: 'https://repo.firka.app/fdroid/repo/app.firka.naplo_arm64-v8a.apk',
-		armeabi: 'https://repo.firka.app/fdroid/repo/app.firka.naplo_armeabi-v7a.apk'
+	let appVersion = '1.0.1';
+
+	$: appDownloadLinks = {
+		arm64: `https://github.com/Zan1456/folio/releases/download/${appVersion}/app-arm64-v8a-release.apk`,
+		armeabi: `https://github.com/Zan1456/folio/releases/download/${appVersion}/app-armeabi-v7a-release.apk`
 	};
 
 	const staticLinks = {
@@ -14,17 +16,20 @@
 		firefox: 'https://addons.mozilla.org/hu/firefox/addon/firxa/'
 	};
 
-	onMount(() => {
+	onMount(async () => {
 		checkCache();
-		downloadsClient();
+		const versions = await downloadsClient();
+		if (versions.appVersion && versions.appVersion !== 'unknown') {
+			appVersion = versions.appVersion;
+		}
 	});
 </script>
 
 <div class="main" id="anchor-downloads">
 	<div class="title">
-		<h2 class="font_web_h2">Töltsd le a Firka Naplót</h2>
+		<h2 class="font_web_h2">Töltsd le a Folio-t</h2>
 		<p class="font_body_16px_regular">
-			A mobil app elérhető robotos telefonokon, és a kedvenc böngésződbe pedig
+			A mobil app elérhető Android telefonokon, és a kedvenc böngésződbe pedig
 			letöltheted a bővítményt.
 		</p>
 	</div>
