@@ -5,14 +5,9 @@
 	let brandingHover = false;
 
 	import {navLinks, normalLogo} from '$lib/components/Navbar';
-	let hoverLogo = '/dave-hover.gif';
+	let hoverLogo = '/logo.png';
 
-	onMount(() => {
-        const currentMonth = new Date().getMonth();
-        if (currentMonth === 5) {
-            hoverLogo = '/dave-hover.pride.gif';
-        }
-    });
+	onMount(() => {});
 </script>
 
 <nav>

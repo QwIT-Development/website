@@ -1,44 +1,32 @@
 import type { RequestHandler } from '@sveltejs/kit';
 
-const appVersionCache = new Map<number, string>();
+let cache: { version: string; fetchedAt: number } | null = null;
+const CACHE_TTL = 10 * 60 * 1000;
 
 export const GET: RequestHandler = async () => {
 	try {
-		const jenkinsLastSuccessful =
-			'https://build.firka.app/job/firka/job/firka/job/main/lastSuccessfulBuild/api/json';
+		if (cache && Date.now() - cache.fetchedAt < CACHE_TTL) {
+			return new Response(JSON.stringify({ version: cache.version }), {
+				headers: { 'Content-Type': 'application/json' }
+			});
+		}
 
-		const res = await fetch(jenkinsLastSuccessful);
-		if (!res.ok) return new Response('Failed to fetch build info', { status: 502 });
-
-		const resText = await res.text();
-		if (!resText) {
+		const res = await fetch('https://api.github.com/repos/Zan1456/folio/releases', {
+			headers: { 'Accept': 'application/vnd.github+json' }
+		});
+		if (!res.ok) {
 			return new Response(JSON.stringify({ version: 'unknown' }), {
 				status: 502,
 				headers: { 'Content-Type': 'application/json' }
 			});
 		}
-		const { number } = JSON.parse(resText) as { number: number };
 
-		if (appVersionCache.has(number)) {
-			return new Response(JSON.stringify({ version: appVersionCache.get(number) }), {
-				headers: { 'Content-Type': 'application/json' }
-			});
-		}
+		const releases = await res.json() as { tag_name: string }[];
+		const version = releases[0]?.tag_name ?? 'unknown';
 
-		console.log(`${number} miss!`);
+		cache = { version, fetchedAt: Date.now() };
 
-		const txtRes = await fetch(
-			`https://build.firka.app/job/firka/job/firka/job/main/${number}/consoleText`
-		);
-		if (!txtRes.ok) return new Response('Failed to fetch console text', { status: 502 });
-
-		const txt = await txtRes.text();
-		const versionPart = txt.split('Updated version to: ')[1];
-		const appVersion = versionPart ? versionPart.split('+')[0] : 'unknown';
-
-		appVersionCache.set(number, appVersion);
-
-		return new Response(JSON.stringify({ version: appVersion }), {
+		return new Response(JSON.stringify({ version }), {
 			headers: { 'Content-Type': 'application/json' }
 		});
 	} catch (err) {
