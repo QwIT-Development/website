@@ -16,6 +16,7 @@
 	}
 	:global(body) {
 		background: var(--background);
+		color: var(--text_primary);
 	}
 	main {
 		display: flex;
@@ -23,13 +24,15 @@
 		align-items: center;
 		justify-content: center;
 		min-height: 100vh;
-		padding: 176px 20px 176px 20px;
+		/* top: 64px nav bar + 32px gap; bottom: ~160px for fixed footer */
+		padding: 96px 24px 180px 24px;
 	}
 
 	@media (max-width: 825px) {
 		main {
 			min-height: auto;
-			padding: 0 20px 0 20px;
+			/* mobile: nav stacks vertically (~120px) */
+			padding: 140px 20px 20px 20px;
 		}
 	}
 </style>

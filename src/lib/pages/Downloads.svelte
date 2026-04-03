@@ -34,13 +34,19 @@
 		</p>
 	</div>
 	<div class="cards">
-		<div class="card tiny_shadow">
+		<div class="card">
 			<div class="card-header">
-				<h2 class="font_header_h2">Alkalmazás</h2>
-				<p class="font_body_16px_regular" id="app-ver"></p>
+				<div class="card-icon">
+					<span class="ri-smartphone-line"></span>
+				</div>
+				<div>
+					<h2 class="font_header_h2">Alkalmazás</h2>
+					<p class="font_body_14px_regular version" id="app-ver"></p>
+				</div>
 			</div>
+			<div class="divider"></div>
 			<div class="card-section">
-				<p class="font_header_14px">Android</p>
+				<p class="font_header_14px label">Android</p>
 				<div class="section-buttons">
 					<Buttons
 						label="Google Play"
@@ -67,19 +73,26 @@
 				</div>
 			</div>
 			<div class="card-section">
-				<p class="font_header_14px">Forráskód</p>
+				<p class="font_header_14px label">Forráskód</p>
 				<div class="section-buttons">
 					<Buttons label="GitHub" href="https://github.com/Zan1456/folio" icon="ri:github-fill"></Buttons>
 				</div>
 			</div>
 		</div>
-		<div class="card tiny_shadow">
+
+		<div class="card">
 			<div class="card-header">
-				<h2 class="font_header_h2">Bővítmény</h2>
-				<p class="font_body_16px_regular" id="ext-ver"></p>
+				<div class="card-icon">
+					<span class="ri-puzzle-line"></span>
+				</div>
+				<div>
+					<h2 class="font_header_h2">Bővítmény</h2>
+					<p class="font_body_14px_regular version" id="ext-ver"></p>
+				</div>
 			</div>
+			<div class="divider"></div>
 			<div class="card-section">
-				<p class="font_header_14px">Chromium (Chrome, Edge, stb.)</p>
+				<p class="font_header_14px label">Chromium (Chrome, Edge, stb.)</p>
 				<div class="section-buttons">
 					<Buttons
 						label="Chrome Web Store"
@@ -90,7 +103,7 @@
 				</div>
 			</div>
 			<div class="card-section">
-				<p class="font_header_14px">Firefox</p>
+				<p class="font_header_14px label">Firefox</p>
 				<div class="section-buttons">
 					<Buttons
 						label="Firefox Add-ons"
@@ -102,7 +115,7 @@
 				</div>
 			</div>
 			<div class="card-section">
-				<p class="font_header_14px">Forráskód</p>
+				<p class="font_header_14px label">Forráskód</p>
 				<div class="section-buttons">
 					<Buttons label="GitHub" href="https://github.com/QwIT-Development/firka-extension" icon="ri:github-fill"></Buttons>
 				</div>
@@ -122,18 +135,10 @@
 
 	div.title {
 		display: flex;
-		width: 400px;
+		width: 460px;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 24px;
-	}
-
-	.row-space-between {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		width: 100%;
-		align-items: center;
+		gap: 16px;
 	}
 
 	.title h2 {
@@ -153,43 +158,74 @@
 		align-self: stretch;
 	}
 
+	/* M3 Filled Card */
 	div.card {
 		display: flex;
 		width: 400px;
-		padding: 20px;
+		padding: 24px;
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 20px;
-		border-radius: 16px;
-		background: var(--card_card);
+		border-radius: var(--shape-xl, 28px);
+		background: var(--md-surface-container, var(--card_card));
+		box-shadow: var(--elevation-1);
+		transition: box-shadow 0.2s ease, background 0.2s ease;
+	}
+
+	div.card:hover {
+		box-shadow: var(--elevation-2);
+	}
+
+	.card-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 16px;
+		align-self: stretch;
+	}
+
+	.card-icon {
+		width: 48px;
+		height: 48px;
+		border-radius: var(--shape-md, 12px);
+		background: var(--md-primary-container, var(--accent_15));
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--md-on-primary-container, var(--accent_secondary));
+		font-size: 22px;
+		flex-shrink: 0;
 	}
 
 	.card-header h2 {
 		color: var(--text_primary);
 	}
 
-	.card-header {
-		display: flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 6px;
-		align-self: stretch;
+	.version {
+		color: var(--text_teritary);
+		margin-top: 2px;
 	}
 
-	.card-header p {
-		color: var(--text_secondary);
+	.divider {
+		width: 100%;
+		height: 1px;
+		background: var(--md-outline-variant, #BFC9C4);
+		opacity: 0.6;
 	}
 
 	.card-section {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 8px;
+		gap: 10px;
 		align-self: stretch;
 	}
 
-	.card-section p {
-		color: var(--text_secondary);
+	.label {
+		color: var(--text_teritary);
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		font-size: 11px;
 	}
 
 	.section-buttons {
@@ -201,14 +237,8 @@
 		flex-wrap: wrap;
 	}
 
-
 	@media (max-width: 1540px) {
-		.modal {
-			width: 80%;
-		}
-
 		div.main {
-			display: flex;
 			width: 100%;
 			flex-direction: column;
 			align-items: center;
@@ -216,24 +246,19 @@
 		}
 
 		div.title {
-			display: flex;
 			flex-direction: column;
-			align-items: flex-start;
-			gap: 12px;
-			align-self: auto;
+			align-items: center;
 			text-align: center;
-			width: 336px;
+			width: 360px;
 		}
 
 		div.cards {
-			display: flex;
 			flex-direction: column;
 			align-items: center;
-			gap: 20px;
 		}
 
 		div.card {
-			width: 336px;
+			width: 360px;
 		}
 	}
 </style>

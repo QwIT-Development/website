@@ -90,8 +90,8 @@
     });
 </script>
 
-<footer class="font_body_16px_regular">
-	<div class="links">
+<footer class="font_body_12px_regular">
+	<div class="social-links">
 		{#each links as link}
 			{#if link.icon.startsWith('ri:')}
 				<a
@@ -102,7 +102,6 @@
 					aria-label={link.label}
 				></a>
 			{:else}
-				<!-- bad but works -->
 				<a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label}>
 					<span
 						class="custom-icon-svg"
@@ -113,17 +112,19 @@
 		{/each}
 	</div>
 	<div class="notice">
-		<p>Website design made by <a href="https://yoursit.ee/xou">xou</a></p>
-		<p>Copyright © {year}, All Rights Reserved</p>
+		<p>Design by <a href="https://yoursit.ee/xou">xou</a></p>
+		<p>© {year} All Rights Reserved</p>
 	</div>
-	<div class="links-ugly">
+	<div class="page-links">
 		<a href="/privacy">Adatkezelés</a>
+		<span class="separator">·</span>
 		<a href="/support">Támogatás</a>
 	</div>
 </footer>
+
 <button
 	on:click={toggleTheme}
-	class="style-switch tiny-shadow"
+	class="style-switch"
 	aria-label="Theme toggle"
 	type="button"
 >
@@ -135,78 +136,68 @@
 </button>
 
 <style>
-	.style-switch {
-		display: flex;
-		width: 32px;
-		height: 32px;
-		justify-content: center;
-		align-items: center;
-		flex-shrink: 0;
-		border-radius: 16px;
-		right: 48px;
-		bottom: 48px;
-		position: fixed;
-		background: var(--button_secondaryfill);
-		cursor: pointer;
-		color: var(--text_teritary);
-		transition:
-			background 0.3s ease,
-			color 0.3s ease;
-            border: none;
-	}
-	.style-switch:hover {
-		background:
-			linear-gradient(0deg, var(--accent_15) 0%, var(--accent_15) 100%), var(--button_secondaryfill);
-		color: var(--text_primary);
-	}
-
 	footer {
-		display: inline-flex;
+		display: flex;
 		flex-direction: column;
-		justify-content: flex-end;
-		align-items: flex-start;
-		gap: 24px;
+		gap: 16px;
 		color: var(--text_teritary);
 		position: fixed;
-		bottom: 48px;
-		left: 48px;
+		bottom: 32px;
+		left: 32px;
+		z-index: 100;
 	}
 
 	footer * a {
 		color: var(--text_teritary);
-		text-decoration: underline;
-		transition: color 0.3s ease;
+		text-decoration: none;
+		transition: color 0.2s ease;
 	}
 
 	footer * a:hover {
-		color: var(--text_primary);
+		color: var(--accent_accent);
 	}
 
-	.links {
+	.social-links {
 		display: flex;
 		align-items: center;
-		gap: 12px;
+		gap: 14px;
 	}
 
-	.links a {
-		text-decoration: none;
-		font-size: 16px;
-		height: 16px;
-		width: 16px;
+	.social-links a {
+		font-size: 18px;
+		height: 18px;
+		width: 18px;
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
 		color: var(--text_teritary);
+		transition: color 0.2s ease;
 	}
 
-	.links a:hover {
-		color: var(--text_primary);
+	.social-links a:hover {
+		color: var(--accent_accent);
+	}
+
+	.notice {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+	.page-links {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.separator {
+		color: var(--md-outline-variant, #BFC9C4);
 	}
 
 	.custom-icon-svg {
 		display: inline-block;
-		width: 16px;
-		height: 16px;
+		width: 18px;
+		height: 18px;
 		-webkit-mask-size: contain;
 		mask-size: contain;
 		-webkit-mask-repeat: no-repeat;
@@ -215,28 +206,57 @@
 		mask-position: center;
 	}
 
-  @media (max-width: 1048px) {
-      footer {
-          width: 200px;
-      }
-  }
+	.style-switch {
+		display: flex;
+		width: 40px;
+		height: 40px;
+		justify-content: center;
+		align-items: center;
+		flex-shrink: 0;
+		border-radius: var(--shape-full);
+		right: 24px;
+		bottom: 24px;
+		position: fixed;
+		background: var(--md-surface-container-high, var(--button_secondaryfill));
+		cursor: pointer;
+		color: var(--text_secondary);
+		transition:
+			background 0.3s ease,
+			color 0.3s ease,
+			box-shadow 0.2s ease;
+		border: 1px solid var(--md-outline-variant, #BFC9C4);
+		box-shadow: var(--elevation-1);
+	}
 
+	.style-switch:hover {
+		background: var(--md-surface-container-highest, var(--button_secondaryfill));
+		color: var(--accent_accent);
+		box-shadow: var(--elevation-2);
+	}
+
+	.style-switch .custom-icon-svg {
+		width: 20px;
+		height: 20px;
+	}
 
 	@media (max-width: 825px) {
 		footer {
 			position: static;
 			display: flex;
-			justify-content: center;
 			align-items: center;
 			text-align: center;
-			margin-bottom: 72px;
-			margin-top: 72px;
-			gap: 24px;
+			margin: 64px 0 100px 0;
+			gap: 16px;
 			width: 100%;
 		}
+
+		.social-links {
+			justify-content: center;
+		}
+
 		.style-switch {
-			right: 24px;
-			bottom: 24px;
+			right: 20px;
+			bottom: 20px;
 		}
 	}
 </style>

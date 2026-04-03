@@ -42,7 +42,7 @@
 	</div>
 
 	<div class="cards-grid">
-		<a href="mailto:support@zan1456.dev" class="card tiny-shadow" aria-label="Email support">
+		<a href="mailto:support@zan1456.dev" class="card" aria-label="Email support">
 			<div class="card-icon">
 				<span class="ri-mail-line"></span>
 			</div>
@@ -57,7 +57,7 @@
 			href="https://discord.gg/GGEUTJj5P7"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="card tiny-shadow"
+			class="card"
 			aria-label="Discord server"
 		>
 			<div class="card-icon">
@@ -74,7 +74,7 @@
 			href="https://github.com/Zan1456/folio/issues"
 			target="_blank"
 			rel="noopener noreferrer"
-			class="card tiny-shadow"
+			class="card"
 			aria-label="GitHub issues"
 		>
 			<div class="card-icon">
@@ -93,7 +93,7 @@
 		<div class="faq-list">
 			{#each faqs as faq, i}
 				<button
-					class="faq-item tiny-shadow"
+					class="faq-item"
 					class:open={openFaq === i}
 					on:click={() => toggle(i)}
 					aria-expanded={openFaq === i}
@@ -118,7 +118,7 @@
 		align-items: center;
 		gap: 72px;
 		width: 100%;
-		max-width: 800px;
+		max-width: 820px;
 	}
 
 	.hero {
@@ -144,33 +144,35 @@
 		width: 100%;
 	}
 
+	/* M3 Filled Card */
 	.card {
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
 		padding: 24px;
-		border-radius: 16px;
-		background: var(--card_card);
+		border-radius: var(--shape-xl, 28px);
+		background: var(--md-surface-container, var(--card_card));
 		text-decoration: none;
 		color: var(--text_primary);
-		transition: background 0.2s ease, transform 0.2s ease;
+		box-shadow: var(--elevation-1);
+		transition: box-shadow 0.2s ease, background 0.2s ease;
 	}
 
 	.card:hover {
-		background: linear-gradient(0deg, var(--accent_15) 0%, var(--accent_15) 100%), var(--card_card);
-		transform: translateY(-2px);
+		background: var(--md-surface-container-high, var(--card_card));
+		box-shadow: var(--elevation-2);
 	}
 
 	.card-icon {
-		width: 40px;
-		height: 40px;
-		border-radius: 12px;
-		background: var(--accent_15);
+		width: 48px;
+		height: 48px;
+		border-radius: var(--shape-md, 12px);
+		background: var(--md-primary-container, var(--accent_15));
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--accent_secondary);
-		font-size: 20px;
+		color: var(--md-on-primary-container, var(--accent_secondary));
+		font-size: 22px;
 	}
 
 	.card-content {
@@ -188,15 +190,12 @@
 	}
 
 	.card-cta {
-		color: var(--accent_readable);
-		margin-top: 8px;
+		color: var(--md-primary, var(--accent_readable));
+		margin-top: 10px;
+		font-weight: 500;
 	}
 
-	:global(html.dark-mode) .card-cta {
-		color: var(--accent_accent);
-	}
-
-.faq-section {
+	.faq-section {
 		display: flex;
 		flex-direction: column;
 		gap: 24px;
@@ -218,17 +217,23 @@
 		flex-direction: column;
 		width: 100%;
 		padding: 20px 24px;
-		border-radius: 12px;
-		background: var(--card_card);
+		border-radius: var(--shape-xl, 28px);
+		background: var(--md-surface-container, var(--card_card));
 		border: none;
 		cursor: pointer;
 		text-align: left;
 		gap: 0;
-		transition: background 0.2s ease;
+		transition: background 0.2s ease, box-shadow 0.2s ease;
+		box-shadow: var(--elevation-1);
 	}
 
 	.faq-item:hover {
-		background: linear-gradient(0deg, var(--accent_15) 0%, var(--accent_15) 100%), var(--card_card);
+		background: var(--md-surface-container-high, var(--card_card));
+		box-shadow: var(--elevation-2);
+	}
+
+	.faq-item.open {
+		background: var(--md-surface-container-high, var(--card_card));
 	}
 
 	.faq-header {
@@ -241,7 +246,7 @@
 
 	.faq-chevron {
 		font-size: 20px;
-		color: var(--text_teritary);
+		color: var(--md-primary, var(--accent_accent));
 		flex-shrink: 0;
 		transition: transform 0.2s ease;
 	}
@@ -252,7 +257,7 @@
 
 	.faq-answer {
 		color: var(--text_secondary);
-		margin-top: 12px;
+		margin-top: 14px;
 		line-height: 1.6;
 	}
 

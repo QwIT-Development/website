@@ -59,15 +59,17 @@
 		<h2 class="font_web_h2">Roadmap</h2>
 	</div>
 	<div class="content">
-		<div class="card tiny_shadow {mainCard.cardClass}">
+		<div class="card {mainCard.cardClass}">
 			<div class="parted">
-				<img src={mainCard.icon} class="icon" alt="" />
-				<p class="title font_header_16px">{mainCard.title}</p>
+				<div class="icon-wrap icon-done">
+					<img src={mainCard.icon} class="icon" alt="" />
+				</div>
+				<p class="card-title font_header_16px">{mainCard.title}</p>
 			</div>
 			{#each mainCard.sections as section}
 				<div class="gparted">
 					{#if section.title}
-						<p class="title2 font_header_14px">{section.title}</p>
+						<p class="section-label font_header_12px">{section.title}</p>
 					{/if}
 					{#each section.items as item}
 						<div class="item">
@@ -79,16 +81,18 @@
 			{/each}
 		</div>
 		<div class="cards">
-			{#each sideCards as card}
-				<div class="card tiny_shadow {card.cardClass}">
+			{#each sideCards as card, i}
+				<div class="card {card.cardClass}">
 					<div class="parted">
-						<img src={card.icon} class="icon" alt="" />
-						<p class="title font_header_16px">{card.title}</p>
+						<div class="icon-wrap {i === 0 ? 'icon-soon' : 'icon-later'}">
+							<img src={card.icon} class="icon" alt="" />
+						</div>
+						<p class="card-title font_header_16px">{card.title}</p>
 					</div>
 					{#each card.sections as section}
 						<div class="gparted">
 							{#if section.title}
-								<p class="title2 font_header_14px">{section.title}</p>
+								<p class="section-label font_header_12px">{section.title}</p>
 							{/if}
 							{#each section.items as item}
 								<div class="item">
@@ -105,18 +109,47 @@
 </main>
 
 <style>
-	div.parted {
-		display: flex;
-		align-items: center;
-		gap: 8px;
-	}
-
-	div.gparted {
-		display: flex;
+	main {
+		display: inline-flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 8px;
+		gap: 32px;
+	}
+
+	.title h2 {
+		color: var(--text_primary);
+	}
+
+	.content {
+		display: flex;
+		align-items: stretch;
+		gap: 20px;
 		align-self: stretch;
+	}
+
+	/* M3 Filled Card */
+	div.card {
+		display: flex;
+		width: 400px;
+		padding: 24px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 20px;
+		border-radius: var(--shape-xl, 28px);
+		background: var(--md-surface-container, var(--card_card));
+		box-shadow: var(--elevation-1);
+		flex-shrink: 0;
+		align-self: stretch;
+		transition: box-shadow 0.2s ease;
+	}
+
+	div.card.disabled {
+		background: var(--md-surface-container-low, var(--card_translucent));
+		box-shadow: none;
+	}
+
+	div.card.disabled * {
+		opacity: 0.45;
 	}
 
 	div.cards {
@@ -128,10 +161,52 @@
 		align-self: stretch;
 	}
 
+	/* Icon badge */
+	.icon-wrap {
+		width: 36px;
+		height: 36px;
+		border-radius: var(--shape-md, 12px);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	.icon-done {
+		background: var(--md-primary-container, var(--accent_15));
+	}
+
+	.icon-soon {
+		background: var(--md-secondary-container, #CEE9DE);
+	}
+
+	.icon-later {
+		background: var(--md-surface-container-highest, var(--button_secondaryfill));
+	}
+
+	.icon {
+		width: 18px;
+		height: 18px;
+	}
+
+	div.parted {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	div.gparted {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+		align-self: stretch;
+	}
+
 	div.item {
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		gap: 10px;
 	}
 
 	.checkmark {
@@ -147,14 +222,14 @@
 	}
 
 	.checkmark.done {
-		background-color: var(--accent_accent);
+		background-color: var(--md-primary, var(--accent_accent));
 		-webkit-mask-image: url(/checkmark_ok.svg);
 		mask-image: url(/checkmark_ok.svg);
 	}
 
 	.checkmark.soon,
 	.checkmark.later {
-		background-color: var(--button_secondaryfill);
+		background-color: var(--md-outline, var(--text_teritary));
 		-webkit-mask-image: url(/checkmark_todo.svg);
 		mask-image: url(/checkmark_todo.svg);
 	}
@@ -163,56 +238,14 @@
 		color: var(--text_secondary);
 	}
 
-	p.title {
+	p.card-title {
 		color: var(--text_primary);
 	}
-	p.title2 {
+
+	p.section-label {
 		color: var(--text_teritary);
-	}
-
-	.icon {
-		width: 20px;
-		height: 20px;
-		aspect-ratio: 1/1;
-	}
-
-	.title h2 {
-		color: var(--text_primary);
-	}
-
-	main {
-		display: inline-flex;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 32px;
-	}
-
-	.content {
-		display: flex;
-		align-items: stretch;
-		gap: 20px;
-		align-self: stretch;
-  }
-
-	div.card {
-		display: flex;
-		width: 400px;
-		padding: 20px;
-		flex-direction: column;
-		align-items: flex-start;
-		gap: 20px;
-		border-radius: 16px;
-		align-self: stretch;
-		background: var(--card_card);
-		flex-shrink: 0;
-	}
-
-	div.card.disabled {
-		background: var(--Card-Translucent);
-	}
-
-	div.card.disabled * {
-		opacity: 0.5;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
 	}
 
 	@media (max-width: 1540px) {
@@ -231,7 +264,7 @@
 			align-items: center;
 			-webkit-overflow-scrolling: touch;
 			scrollbar-width: none;
-			width: 336px;
+			width: 360px;
 			align-self: center;
 		}
 
@@ -240,7 +273,7 @@
 		}
 
 		div.card {
-			width: 336px;
+			width: 360px;
 		}
 	}
 </style>

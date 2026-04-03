@@ -11,42 +11,61 @@
 </script>
 
 <nav>
-<div class="branding">
-	<a
-		href="/"
-		on:mouseenter={() => (brandingHover = true)}
-		on:mouseleave={() => (brandingHover = false)}
-	>
-		<img src={brandingHover ? hoverLogo : normalLogo} alt="logo" />
-		<h1>Folio</h1>
-	</a>
-</div>
-<div class="links">
-	{#each navLinks as link}
-		<Buttons label={link.name} type={link.style} href={link.url} icon={link.icon}></Buttons>
-	{/each}
-</div>
+	<div class="branding">
+		<a
+			href="/"
+			on:mouseenter={() => (brandingHover = true)}
+			on:mouseleave={() => (brandingHover = false)}
+		>
+			<img src={brandingHover ? hoverLogo : normalLogo} alt="logo" />
+			<span class="font_header_16px brand-name">Folio</span>
+		</a>
+	</div>
+	<div class="links">
+		{#each navLinks as link}
+			<Buttons label={link.name} type={link.style} href={link.url} icon={link.icon}></Buttons>
+		{/each}
+	</div>
 </nav>
 
 <style>
-	div.branding {
-		top: 48px;
-		left: 48px;
-		z-index: 1000;
+	nav {
 		position: fixed;
-		height: 40px;
-        max-width: 278px;
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-        color: var(--text_secondary);
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		height: 64px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 24px;
+		background: var(--md-surface-container-low, var(--card_card));
+		border-bottom: 1px solid var(--md-outline-variant, #BFC9C4);
+		transition: background 0.3s ease, border-color 0.3s ease;
 	}
 
 	div.branding a {
 		display: flex;
 		flex-direction: row;
-		gap: 24px;
+		align-items: center;
+		gap: 12px;
 		text-decoration: none;
+		color: var(--text_primary);
+		transition: opacity 0.2s ease;
+	}
+
+	div.branding a:hover {
+		opacity: 0.8;
+	}
+
+	div.branding a img {
+		width: 36px;
+		height: 36px;
+		border-radius: var(--shape-sm);
+	}
+
+	.brand-name {
 		color: var(--text_primary);
 	}
 
@@ -54,47 +73,24 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 8px;
-		right: 48px;
-		top: 48px;
-		z-index: 1000;
-		position: fixed;
-		flex-wrap: wrap;
-		height: 40px;
-	}
-
-	div.branding a img {
-		width: 40px;
-		height: 40px;
+		flex-wrap: nowrap;
 	}
 
 	@media (max-width: 825px) {
-        nav {
-            margin-bottom: 72px;
-        }
-		div.branding {
-			position: static;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            align-items: center;
-            max-width: none;
-            text-align: center;
-            padding: 72px 20px 0 20px;
-            height: auto;
-            margin-bottom: 40px;
-		}
-		div.branding a {
-			display: flex;
+		nav {
+			height: auto;
 			flex-direction: column;
 			gap: 16px;
-            align-items: center;
+			padding: 16px 20px;
+		}
+
+		div.branding a {
+			flex-direction: row;
+			gap: 12px;
 		}
 
 		div.links {
-			position: static;
-			display: flex;
-			flex-direction: row;
-			width: 100%;
+			flex-wrap: wrap;
 			justify-content: center;
 		}
 	}
