@@ -30,7 +30,7 @@
 						class={formatIconClass(icon)}
 						aria-label={label}
 						role="img"
-						style="width: 16px; height: 16px;"
+						style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; line-height: 1;"
 					></span>
 				{:else}
 					<span
@@ -51,7 +51,7 @@
 						class={formatIconClass(icon)}
 						aria-label={label}
 						role="img"
-						style="width: 16px; height: 16px;"
+						style="width: 16px; height: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; line-height: 1;"
 					></span>
 				{:else}
 					<span
